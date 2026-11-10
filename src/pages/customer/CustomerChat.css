@@ -1,0 +1,197 @@
+/* =========================================
+   CHAT CONTAINER (FULL HEIGHT)
+   ========================================= */
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #e9f2f5;
+}
+
+/* HEADER */
+.chat-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #e2e8f0;
+}
+.chat-header button {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: #0b4b5e;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.chat-header h1 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #0b4b5e;
+  font-weight: 700;
+}
+
+/* SUBHEADER */
+.chat-sub {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #64748b;
+}
+.chat-sub ion-icon {
+  color: #2ab88a;
+}
+
+/* MESSAGES AREA */
+.chat-messages {
+  flex: 1;
+  overflow-y: auto;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  /* Padding sa ilalim para hindi matakpan ng input */
+  padding-bottom: 8px; 
+}
+
+/* EMPTY STATE */
+.chat-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: #64748b;
+  text-align: center;
+  padding: 24px;
+}
+
+/* ROWS */
+.chat-row {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  max-width: 85%;
+}
+.chat-row.mine {
+  align-self: flex-end;
+  flex-direction: row-reverse;
+}
+.chat-row.theirs {
+  align-self: flex-start;
+}
+
+/* AVATAR */
+.chat-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #cbd5e1;
+  color: #475569;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+  margin-bottom: 4px;
+}
+
+/* BUBBLE */
+.chat-bubble {
+  padding: 10px 14px;
+  border-radius: 16px;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  position: relative;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  max-width: 100%;
+  word-wrap: break-word;
+}
+.chat-row.mine .chat-bubble {
+  background: #0b4b5e;
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.chat-row.theirs .chat-bubble {
+  background: #fff;
+  color: #1e293b;
+  border-bottom-left-radius: 4px;
+}
+
+/* TAGS */
+.chat-tag {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+  opacity: 0.7;
+}
+.chat-time {
+  display: block;
+  font-size: 0.65rem;
+  opacity: 0.6;
+  margin-top: 4px;
+  text-align: right;
+}
+
+/* ERROR */
+.chat-error {
+  padding: 8px 16px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 0.85rem;
+  text-align: center;
+  border-top: 1px solid #fecaca;
+}
+
+/* INPUT FORM (FIXED SA ILALIM) */
+.chat-input-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  /* Safe area para hindi matakpan ng home bar indicator */
+  padding-bottom: calc(12px + env(safe-area-inset-bottom, 0px)); 
+  background: #fff;
+  border-top: 1px solid #e2e8f0;
+  flex-shrink: 0;
+}
+.chat-input-form input {
+  flex: 1;
+  height: 44px;
+  padding: 0 16px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  outline: none;
+  background: #f8fafc;
+}
+.chat-input-form input:focus {
+  border-color: #0b4b5e;
+  background: #fff;
+}
+.chat-input-form button {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #0b4b5e;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+.chat-input-form button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

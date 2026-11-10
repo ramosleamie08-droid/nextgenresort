@@ -1,0 +1,236 @@
+/* ============ GLOBAL ============ */
+.cp-content {
+  --background: #e2e8f0;
+  --padding-top: 56px; /* IDINAGDAG: Pantay ito sa taas ng Header para hindi matakpan */
+}
+
+/* ============ CONTAINER ============ */
+.cp-container {
+  padding: 24px 16px 100px;
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cp-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+/* ============ CARDS ============ */
+.cp-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(11, 75, 94, 0.06);
+  border: 1px solid rgba(11, 75, 94, 0.08);
+}
+
+/* AVATAR CARD */
+.cp-avatar-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.cp-avatar {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #e0f2fe;
+  color: #0b4b5e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 40px;
+  margin-bottom: 16px;
+}
+
+.cp-avatar-card h2 {
+  margin: 0;
+  font-size: 1.4rem;
+  color: #0b4b5e;
+  font-weight: 800;
+}
+
+.cp-avatar-card p {
+  margin: 4px 0 0;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+/* CARD HEADER */
+.cp-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cp-card-header h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  color: #0b4b5e;
+  font-weight: 800;
+}
+
+/* EDIT BUTTONS */
+.cp-btn-edit {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #e0f2fe;
+  color: #0284c7;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.cp-edit-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.cp-btn-cancel {
+  background: #fee2e2;
+  color: #b91c1c;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.cp-btn-save {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #0b4b5e;
+  color: #fff;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.cp-btn-save:disabled { opacity: 0.6; }
+
+/* FIELDS */
+.cp-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+
+.cp-field label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #334155;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cp-field input {
+  padding: 12px 16px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  color: #0b4b5e;
+  outline: none;
+  transition: border-color 0.2s;
+  background: #f8fafc;
+}
+.cp-field input:focus {
+  border-color: #0b4b5e;
+  background: #fff;
+}
+.cp-field input:disabled {
+  background: #f1f5f9;
+  color: #94a3b8;
+  border-color: #e2e8f0;
+}
+
+.cp-hint {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 6px;
+}
+
+/* DANGER ZONE */
+.cp-danger-zone {
+  border-color: #fecaca;
+  background: #fffafa;
+}
+.cp-danger-zone h3 {
+  color: #b91c1c;
+  margin-top: 0;
+  font-size: 1.1rem;
+}
+.cp-danger-zone p {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 20px;
+}
+
+.cp-btn-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 100%;
+  padding: 14px;
+  background: #fee2e2;
+  color: #b91c1c;
+  border: 1.5px solid #fca5a5;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cp-btn-delete:hover {
+  background: #fecaca;
+}
+.cp-btn-delete:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.cp-warning {
+  display: block;
+  font-size: 0.85rem;
+  color: #b91c1c;
+  margin-top: 12px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.cp-btn-logout {
+  width: 100%;
+  margin-top: 16px;
+  padding: 14px;
+  background: #f1f5f9;
+  color: #475569;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.cp-btn-logout:hover {
+  background: #e2e8f0;
+}

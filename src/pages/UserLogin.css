@@ -1,0 +1,409 @@
+/* Idagdag ito sa pinakataas para gumanda ang font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+
+/* ============ GLOBAL ============ */
+.lg-content {
+  --background: #0b4b5e;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ============ DESKTOP & BACKGROUND ============ */
+.lg-bg {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  /* Ginawang madilim na gradient na may kaunting blur para lumitaw ang white card */
+  background: linear-gradient(135deg, #062d38 0%, #0b4b5e 100%);
+}
+
+/* Pinalitan ang overlay para maging malinis */
+.lg-overlay {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(circle at top right, rgba(46, 204, 154, 0.1), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(11, 75, 94, 0.5), transparent 40%);
+  pointer-events: none;
+}
+
+/* ============ CARD ============ */
+.lg-card {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 980px;
+  min-height: 600px;
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  border-radius: 24px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* ============ LEFT SIDE (IMAGE) ============ */
+.lg-brand {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 44px 40px;
+  color: #fff;
+  background:
+    linear-gradient(to top, rgba(6, 40, 52, 0.95) 0%, rgba(6, 40, 52, 0.2) 80%),
+    url('/592936916_885061910718930_4576195278388961525_n.jpg') center / cover no-repeat;
+}
+
+.lg-badge {
+  align-self: flex-start;
+  padding: 6px 14px;
+  margin-bottom: 18px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.lg-brand-title {
+  margin: 0 0 10px;
+  font-size: 2.2rem;
+  line-height: 1.15;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+
+.lg-brand-tag {
+  margin: 0;
+  font-size: 1rem;
+  opacity: 0.9;
+  line-height: 1.5;
+}
+
+/* ============ RIGHT SIDE (FORM) ============ */
+.lg-form-side {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 44px 40px;
+  background: #fff;
+}
+
+.lg-form {
+  width: 100%;
+  max-width: 360px;
+}
+
+.lg-title {
+  margin: 0 0 6px;
+  text-align: center;
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0b4b5e;
+  letter-spacing: -0.01em;
+}
+
+.lg-subtitle {
+  margin: 0 0 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #6b7c85;
+}
+
+/* ============ INPUTS ============ */
+.lg-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 52px;
+  padding: 0 16px;
+  margin-bottom: 14px;
+  border-radius: 12px;
+  background: #f8fafc;
+  border: 1.5px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.lg-field:focus-within {
+  background: #fff;
+  border-color: #0b4b5e;
+  box-shadow: 0 0 0 4px rgba(11, 75, 94, 0.1);
+}
+
+.lg-field-icon {
+  font-size: 1.2rem;
+  color: #94a3b8;
+  flex-shrink: 0;
+}
+
+.lg-field:focus-within .lg-field-icon {
+  color: #0b4b5e;
+}
+
+.lg-field input {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-family: inherit;
+}
+
+.lg-field input::placeholder {
+  color: #94a3b8;
+}
+
+.lg-eye {
+  display: flex;
+  align-items: center;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: #94a3b8;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+/* ============ FORGOT PASSWORD ============ */
+.lg-forgot-row {
+  display: flex;
+  justify-content: flex-end;
+  margin: -4px 0 16px;
+}
+
+.lg-forgot {
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: #2ecc9a;
+  cursor: pointer;
+}
+
+.lg-forgot:hover {
+  text-decoration: underline;
+}
+
+/* ============ ALERTS ============ */
+.lg-error {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #b91c1c;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 10px;
+}
+
+.lg-info {
+  margin: 0 0 16px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #0b4b5e;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  border-radius: 10px;
+}
+
+/* ============ BUTTONS ============ */
+.lg-submit {
+  width: 100%;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  color: #fff;
+  cursor: pointer;
+  background: #0b4b5e;
+  box-shadow: 0 8px 20px rgba(11, 75, 94, 0.25);
+  transition: all 0.2s;
+}
+
+.lg-submit:hover {
+  background: #0e5d74;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(11, 75, 94, 0.35);
+}
+
+.lg-submit:active {
+  transform: translateY(0);
+}
+
+.lg-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ============ DIVIDER ============ */
+.lg-divider {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 24px 0 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.lg-divider::before,
+.lg-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+/* ============ GOOGLE BUTTON ============ */
+.lg-social {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.lg-google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  height: 52px;
+  background: #fff;
+  color: #3c4043;
+  font-size: 0.95rem;
+  font-weight: 600;
+  font-family: inherit;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.lg-google-btn:hover {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+}
+
+.lg-google-btn svg {
+  flex-shrink: 0;
+}
+
+/* ============ SWITCH ============ */
+.lg-switch {
+  margin: 24px 0 0;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #64748b;
+}
+
+.lg-switch span {
+  color: #0b4b5e;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.lg-switch span:hover {
+  text-decoration: underline;
+}
+
+/* ============ PHONE: FULL SCREEN ============ */
+@media (max-width: 768px) {
+  .lg-bg {
+    padding: 0;
+    align-items: stretch;
+    min-height: 100%;
+    background: #fff;
+  }
+
+  .lg-overlay {
+    display: none;
+  }
+
+  .lg-card {
+    max-width: none;
+    width: 100%;
+    min-height: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    background: transparent;
+  }
+
+  /* Maikling image sa itaas para sa mobile */
+  .lg-brand {
+    flex: 0 0 auto;
+    height: 22vh;
+    min-height: 160px;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: calc(env(safe-area-inset-top, 0px) + 16px) 24px 48px;
+  }
+
+  .lg-badge {
+    display: none;
+  }
+
+  .lg-brand-title {
+    font-size: 1.5rem;
+    margin-bottom: 6px;
+  }
+
+  .lg-brand-tag {
+    font-size: 0.85rem;
+  }
+
+  .lg-form-side {
+    flex: 1 1 auto;
+    align-items: flex-start;
+    margin-top: -28px;
+    padding: 32px 24px calc(env(safe-area-inset-bottom, 0px) + 24px);
+    border-radius: 28px 28px 0 0;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 -10px 30px rgba(0, 0, 0, 0.1);
+  }
+
+  .lg-form {
+    max-width: 100%;
+  }
+}
+/* Itago ang default na mata ng browser (Edge, Chrome, Safari) */
+input[type="password"]::-ms-reveal,
+input[type="password"]::-ms-clear {
+  display: none;
+}
+
+input[type="password"]::-webkit-reveal {
+  display: none;
+}
+
+/* Para sa Edge/Chrome */
+.lg-field input::-webkit-contacts-auto-fill-button,
+.lg-field input::-webkit-credentials-auto-fill-button {
+  visibility: hidden;
+  display: none !important;
+  pointer-events: none;
+}
+
+/* Kung may lumalabas pa ring mata, i-hide ang default button */
+.lg-field input[type="password"]::-webkit-textfield-decoration-container {
+  display: none;
+}

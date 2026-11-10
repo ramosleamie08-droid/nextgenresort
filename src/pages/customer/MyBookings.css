@@ -1,0 +1,258 @@
+/* ============ GLOBAL BACKGROUND ============ */
+.mb-content {
+  --background: #e2e8f0; /* Medyo madilim na background para hindi masakit sa mata */
+}
+
+/* ============ MAIN CONTAINER ============ */
+.mb-wrapper {
+  padding: 24px 16px;
+  padding-bottom: 100px;
+  max-width: 900px; /* Pinalawak nang kaunti para mas maayos tignan */
+  margin: 0 auto;
+}
+
+/* ============ HEADER TITLE ============ */
+.mb-top-bar {
+  margin-bottom: 20px;
+}
+.mb-top-bar h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  color: #0b4b5e;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+}
+
+/* ============ LOADING & EMPTY STATES ============ */
+.mb-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60vh;
+}
+
+.mb-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  text-align: center;
+  color: #6b7c85;
+}
+.mb-empty ion-icon {
+  font-size: 64px;
+  color: #94a3b8;
+  margin-bottom: 16px;
+}
+.mb-empty h2 {
+  margin: 0 0 8px;
+  color: #0b4b5e;
+  font-size: 1.4rem;
+}
+
+/* ============ BOOKING CARDS ============ */
+.mb-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mb-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 24px; /* Nilakihan ang padding para mas maaliwalas */
+  box-shadow: 0 4px 12px rgba(11, 75, 94, 0.06);
+  border: 1px solid rgba(11, 75, 94, 0.08);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.mb-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(11, 75, 94, 0.12);
+}
+
+/* Card Header */
+.mb-card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 16px;
+  gap: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  padding-bottom: 16px;
+}
+.mb-card-head h3 {
+  margin: 0;
+  font-size: 1.15rem;
+  color: #0b4b5e;
+  font-weight: 800;
+}
+
+/* ============ STATUS BADGES ============ */
+.mb-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 12px;
+  border-radius: 20px;
+  white-space: nowrap;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.badge-pending { background: #fef3c7; color: #b45309; }
+.badge-accepted { background: #d1fae5; color: #047857; }
+.badge-cancel-req { background: #fee2e2; color: #b91c1c; }
+.badge-cancelled { background: #f1f5f9; color: #475569; }
+
+/* ============ DETAILS ROWS ============ */
+.mb-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: #f8fafc; /* Medyo kulay abo para may contrast sa puting card */
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 16px;
+}
+
+.mb-detail-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 0.95rem;
+  color: #334155;
+  font-weight: 500;
+}
+.mb-detail-row ion-icon {
+  color: #0b4b5e;
+  font-size: 18px;
+}
+
+/* ============ REASON ============ */
+.mb-reason {
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: #b91c1c;
+  background: #fef2f2;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border-left: 4px solid #ef4444;
+}
+
+/* ============ ACTIONS ============ */
+.mb-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 8px;
+}
+.mb-btn-cancel {
+  background: #fff;
+  color: #dc2626;
+  border: 1.5px solid #fca5a5;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.mb-btn-cancel:hover {
+  background: #fef2f2;
+  border-color: #ef4444;
+}
+.mb-btn-cancel:active {
+  background: #fee2e2;
+}
+
+/* ============ MODAL (Cancel Dialog) ============ */
+.mb-modal {
+  --border-radius: 20px;
+}
+.mb-modal-content {
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #fff;
+}
+.mb-modal-head h2 {
+  margin: 0 0 8px;
+  font-size: 1.5rem;
+  color: #0b4b5e;
+  font-weight: 800;
+}
+.mb-modal-head p {
+  margin: 0 0 24px;
+  font-size: 0.95rem;
+  color: #64748b;
+}
+
+.mb-radio-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 24px;
+  overflow-y: auto;
+}
+.mb-radio-item {
+  --background: #f8fafc;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  --min-height: 56px;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  font-size: 0.95rem;
+  color: #1e293b;
+  font-weight: 600;
+}
+.mb-radio-item ion-radio {
+  --color-checked: #0b4b5e;
+}
+
+.mb-other-input {
+  margin-bottom: 24px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1.5px solid #e2e8f0;
+  --padding-start: 16px;
+}
+
+.mb-modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+.mb-btn-secondary, .mb-btn-primary {
+  flex: 1;
+  padding: 16px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.2s;
+}
+.mb-btn-secondary {
+  background: #f1f5f9;
+  color: #475569;
+}
+.mb-btn-secondary:hover {
+  background: #e2e8f0;
+}
+.mb-btn-primary {
+  background: #0b4b5e;
+  color: #fff;
+}
+.mb-btn-primary:hover {
+  background: #0e5d74;
+}
+.mb-btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}

@@ -1,0 +1,593 @@
+.lm-modal {
+  --width: 100%;
+  --height: 100%;
+  --border-radius: 0;
+  --background: #e9f2f5;
+}
+
+@media (min-width: 900px) {
+  .lm-modal {
+    --width: 980px;
+    --height: 90%;
+    --border-radius: 24px;
+  }
+}
+
+.lm-content {
+  --background: #e9f2f5;
+}
+
+.lm-close {
+  position: absolute;
+  top: calc(env(safe-area-inset-top, 0px) + 12px);
+  right: 14px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  border-radius: 50%;
+  background: #fff;
+  color: #0b4b5e;
+  font-size: 1.4rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+
+.lm-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 22px;
+  padding: calc(env(safe-area-inset-top, 0px) + 18px) 18px 32px;
+}
+
+@media (min-width: 900px) {
+  .lm-layout {
+    grid-template-columns: 1.1fr 1fr;
+    gap: 28px;
+    padding: 28px 28px 36px;
+  }
+}
+
+/* Larawan at detalye */
+.lm-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 18px;
+  display: block;
+  margin-bottom: 14px;
+}
+
+.lm-cat {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #2ab88a;
+}
+
+.lm-title {
+  margin: 4px 0 8px;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0b4b5e;
+}
+
+.lm-rating-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+  font-size: 0.85rem;
+  color: #5b6f78;
+}
+
+.lm-price {
+  margin-left: auto;
+  font-size: 1.15rem;
+  color: #0b4b5e;
+}
+
+.lm-stars {
+  display: inline-flex;
+  color: #f5a524;
+}
+
+.lm-desc {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #4d636d;
+}
+
+.lm-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.lm-tags span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 10px;
+  border-radius: 999px;
+  background: #fff;
+  color: #4d636d;
+  font-size: 0.74rem;
+  font-weight: 700;
+}
+
+.lm-tags ion-icon {
+  color: #2ab88a;
+}
+
+/* Card (booking at review form) */
+.lm-card {
+  display: flex;
+  flex-direction: column;
+  padding: 18px;
+  margin-bottom: 16px;
+  border-radius: 20px;
+  background: #f7fafb;
+  box-shadow: 0 6px 18px rgba(11, 75, 94, 0.08);
+}
+
+.lm-card-title {
+  margin: 0 0 12px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b4b5e;
+}
+
+.lm-label {
+  margin: 10px 0 6px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #0b4b5e;
+}
+
+.lm-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid #e1eaee;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.lm-field:focus-within {
+  border-color: #0b4b5e;
+  box-shadow: 0 0 0 4px rgba(11, 75, 94, 0.12);
+}
+
+.lm-field ion-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  color: #7a8d96;
+}
+
+.lm-field input,
+.lm-field select {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: #12323d;
+}
+
+.lm-error {
+  margin: 12px 0 0;
+  padding: 10px 14px;
+  font-size: 0.85rem;
+  color: #b42318;
+  background: #fef3f2;
+  border: 1px solid #fecdca;
+  border-radius: 10px;
+}
+
+.lm-submit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 50px;
+  margin-top: 16px;
+  border: none;
+  border-radius: 14px;
+  background: #0b4b5e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(11, 75, 94, 0.28);
+}
+
+.lm-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.lm-submit-outline {
+  height: 44px;
+  background: #fff;
+  color: #0b4b5e;
+  border: 1.5px solid #0b4b5e;
+  box-shadow: none;
+}
+
+.lm-done {
+  padding: 24px 18px;
+  text-align: center;
+  border-radius: 20px;
+  background: #f7fafb;
+}
+
+.lm-done > ion-icon {
+  font-size: 3rem;
+  color: #2ab88a;
+}
+
+.lm-done h3 {
+  margin: 8px 0;
+  color: #0b4b5e;
+}
+
+.lm-done p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: #4d636d;
+}
+
+/* ===== Adult / Kids counter ===== */
+.lm-counters {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.lm-counter-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #fff;
+  border: 1.5px solid #e1eaee;
+}
+
+.lm-counter-row strong {
+  display: block;
+  font-size: 0.92rem;
+  color: #12323d;
+}
+
+.lm-counter-row small {
+  font-size: 0.74rem;
+  color: #7a8d96;
+}
+
+.lm-counter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.lm-counter span {
+  min-width: 22px;
+  text-align: center;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0b4b5e;
+}
+
+.lm-counter button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #0b4b5e;
+  color: #fff;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.lm-counter button:disabled {
+  background: #cfdce2;
+  cursor: not-allowed;
+}
+
+/* ===== Payment ===== */
+.lm-pay-types {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.lm-pay-card {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  text-align: left;
+  border: 1.5px solid #e1eaee;
+  border-radius: 14px;
+  background: #fff;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.lm-pay-card span {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #5b6f78;
+}
+
+.lm-pay-card strong {
+  font-size: 1.05rem;
+  color: #0b4b5e;
+}
+
+.lm-pay-card.active {
+  border-color: #0b4b5e;
+  background: #ecf7f9;
+  box-shadow: 0 0 0 3px rgba(11, 75, 94, 0.12);
+}
+
+.lm-methods {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.lm-method {
+  height: 44px;
+  border: 1.5px solid #e1eaee;
+  border-radius: 12px;
+  background: #fff;
+  color: #274753;
+  font-size: 0.9rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+}
+
+.lm-method.active {
+  border-color: #0b4b5e;
+  background: #0b4b5e;
+  color: #fff;
+}
+
+.lm-pay-info {
+  margin-top: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #ecf7f9;
+  border: 1px dashed #9fcdd8;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #0b4b5e;
+}
+
+/* ===== Breakdown ===== */
+.lm-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px dashed #cfdce2;
+  font-size: 0.88rem;
+  color: #4d636d;
+}
+
+.lm-breakdown > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.lm-breakdown-total {
+  padding-top: 8px;
+  border-top: 1px solid #e1eaee;
+  font-weight: 700;
+}
+
+.lm-breakdown-total strong {
+  font-size: 1.3rem;
+  color: #0b4b5e;
+}
+
+.lm-breakdown-now strong {
+  font-size: 1.05rem;
+  color: #2ab88a;
+}
+
+/* Reviews */
+.lm-section {
+  margin: 0 0 12px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #0b4b5e;
+}
+
+.lm-summary {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+
+.lm-avg {
+  font-size: 2.6rem;
+  font-weight: 800;
+  color: #0b4b5e;
+}
+
+.lm-count {
+  margin-top: 2px;
+  font-size: 0.8rem;
+  color: #6b7c85;
+}
+
+.lm-rate-input {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.lm-rate-input button {
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #f5a524;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.lm-textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1.5px solid #e1eaee;
+  border-radius: 14px;
+  outline: none;
+  resize: vertical;
+  background: #fff;
+  font-size: 0.92rem;
+  font-family: inherit;
+  color: #12323d;
+}
+
+.lm-textarea:focus {
+  border-color: #0b4b5e;
+}
+
+.lm-reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.lm-review {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.lm-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: #0b4b5e;
+  color: #fff;
+  font-weight: 800;
+}
+
+.lm-review-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.lm-review-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #12323d;
+}
+
+.lm-review-top span {
+  font-size: 0.74rem;
+  color: #8a9aa2;
+}
+
+.lm-review-body p {
+  margin: 6px 0 0;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #4d636d;
+  word-break: break-word;
+}
+
+.lm-empty {
+  padding: 18px;
+  text-align: center;
+  color: #7a8d96;
+  font-size: 0.9rem;
+}
+/* FULLY BOOKED ALERT SA LOOB NG MODAL */
+.lm-fully-booked-alert {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: #fff5f5;
+  border: 1px solid #fed7d7;
+  padding: 24px;
+  border-radius: 12px;
+  margin-top: 24px;
+}
+.lm-fully-booked-alert ion-icon {
+  font-size: 48px;
+  color: #e53e3e;
+  margin-bottom: 12px;
+}
+.lm-fully-booked-alert h3 {
+  margin: 0 0 8px;
+  color: #c53030;
+  font-size: 20px;
+}
+.lm-fully-booked-alert p {
+  margin: 0;
+  color: #742a2a;
+  font-size: 14px;
+  line-height: 1.5;
+}
+/* PAY NOW BUTTON */
+.lm-submit {
+  width: 100%;
+  height: 52px;
+  border: none;
+  border-radius: 12px;
+  background: #0b4b5e;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  margin-top: 16px;
+}
+.lm-submit:hover {
+  background: #0e5d74;
+}
+.lm-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
