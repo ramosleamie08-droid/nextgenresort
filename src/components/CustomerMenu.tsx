@@ -14,6 +14,7 @@ import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { auth } from '../firebase';
 import { subscribeNotifications } from '../services/notifications';
+import { loginUrl } from '../utils/paths';
 import './CustomerMenu.css';
 
 interface Props {
@@ -46,10 +47,10 @@ const CustomerMenu: React.FC<Props> = ({ isOpen, onClose }) => {
     onClose();
     try {
       await signOut(auth);
-      window.location.replace('/login');
     } catch (e) {
       console.error(e);
     }
+    window.location.replace(loginUrl());
   };
 
   const goTo = (path: string) => {

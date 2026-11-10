@@ -12,6 +12,7 @@ import {
 import { useLocation, useNavigate } from 'react-router-dom';
 import { signOut } from 'firebase/auth';
 import { auth } from '../firebase';
+import { loginUrl } from '../utils/paths';
 import './AdminMenu.css';
 
 interface Props {
@@ -43,7 +44,7 @@ const AdminMenu: React.FC<Props> = ({ isOpen, onClose }) => {
     } catch (err) {
       console.error('Logout failed:', err);
     }
-    window.location.replace('/login');
+    window.location.replace(loginUrl());
   };
 
   return (
