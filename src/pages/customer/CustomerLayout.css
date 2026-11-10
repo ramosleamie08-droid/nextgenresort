@@ -22,111 +22,92 @@
   height: 100%;
 }
 
-/* KALIWA (Menu at Location) */
-.ch-left {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  min-width: 0;
+.ch-left { display: flex; align-items: center; gap: 12px; min-width: 0; }
+.ch-location { display: flex; align-items: center; gap: 8px; }
+.ch-location ion-icon { color: #2ecc9a; font-size: 1.2rem; }
+.ch-location div { display: flex; flex-direction: column; line-height: 1.1; }
+.ch-location-label { font-size: 0.6rem; font-weight: 700; color: #2ecc9a; text-transform: uppercase; }
+.ch-location strong { font-size: 0.85rem; color: #fff; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+.ch-nav { display: none; align-items: center; gap: 32px; }
+.ch-nav button {
+  background: transparent; border: none; color: #fff; font-weight: 600; font-size: 1rem; cursor: pointer; opacity: 0.9; padding: 8px 0; transition: opacity 0.2s; white-space: nowrap;
+}
+.ch-nav button:hover { opacity: 1; text-decoration: underline; text-underline-offset: 6px; }
+
+.ch-actions { display: flex; align-items: center; gap: 16px; }
+.ch-icon-btn {
+  position: relative; background: transparent; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; display: flex; align-items: center;
+}
+.ch-dot {
+  position: absolute; top: 2px; right: 2px; width: 7px; height: 7px; border-radius: 50%; background: #ff4d4f; border: 1.5px solid #0b4b5e;
 }
 
-.ch-location {
-  display: flex;
-  align-items: center;
-  gap: 8px;
+@media (min-width: 1024px) {
+  .ch-nav { display: flex; }
 }
 
-.ch-location ion-icon {
-  color: #2ecc9a;
-  font-size: 1.2rem;
+/* =========================================
+   BOTTOM TABS (NAKA-FIXED AT MAY BACKGROUND)
+   ========================================= */
+.customer-tab-bar {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  display: flex !important;
+  justify-content: space-around;
+  background-color: #0b4b5e !important;
+  padding: 8px 0 calc(8px + env(safe-area-inset-bottom, 0px));
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 9999 !important;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.15);
+  transform: translateZ(0);
 }
 
-.ch-location div {
+.customer-tab-bar button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.6);
   display: flex;
   flex-direction: column;
-  line-height: 1.1;
-}
-
-.ch-location-label {
-  font-size: 0.6rem;
-  font-weight: 700;
-  color: #2ecc9a;
-  text-transform: uppercase;
-}
-
-.ch-location strong {
-  font-size: 0.85rem;
-  color: #fff;
-  font-weight: 600;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* GITNA (Navigation Links) */
-.ch-nav {
-  display: none;
   align-items: center;
-  gap: 32px; /* Mas maluwag na gap */
-}
-
-.ch-nav button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-weight: 600;
-  font-size: 1rem;
+  justify-content: center;
+  gap: 4px;
+  padding: 4px 12px;
   cursor: pointer;
-  opacity: 0.9;
-  padding: 8px 0;
-  transition: opacity 0.2s;
-  white-space: nowrap; /* Para hindi mag-wrap ang text */
+  flex: 1;
+  transition: color 0.2s;
 }
 
-.ch-nav button:hover {
-  opacity: 1;
-  text-decoration: underline;
-  text-underline-offset: 6px;
+.customer-tab-bar button.active {
+  color: #ffffff;
 }
 
-/* KANAN (Notifications) */
-.ch-actions {
-  display: flex;
-  align-items: center;
-  gap: 16px;
+.customer-tab-bar button ion-icon {
+  font-size: 24px;
 }
 
-.ch-icon-btn {
-  position: relative;
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 1.5rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+.customer-tab-bar button ion-label {
+  font-size: 11px;
+  font-weight: 600;
+  font-family: inherit;
 }
 
-.ch-dot {
-  position: absolute;
-  top: 2px;
-  right: 2px;
-  width: 7px;
-  height: 7px;
-  border-radius: 50%;
-  background: #ff4d4f;
-  border: 1.5px solid #0b4b5e;
+/* Kapag may keyboard, itago ang tabs para hindi umangat */
+body.keyboard-is-open .customer-tab-bar {
+  display: none !important;
 }
 
-/* DESKTOP VIEW */
+/* Itago sa desktop */
 @media (min-width: 1024px) {
-  .ch-nav {
-    display: flex;
+  .customer-tab-bar {
+    display: none !important;
   }
 }
 
 /* =========================================
-   CONTENT PADDING
+   CONTENT PADDING (Para hindi matakpan ng tabs)
    ========================================= */
 .with-tabs {
   --padding-bottom: 80px;
@@ -134,10 +115,4 @@
 
 .no-tabs {
   --padding-bottom: 0px;
-}
-
-@media (min-width: 1024px) {
-  .with-tabs {
-    --padding-bottom: 0px;
-  }
 }

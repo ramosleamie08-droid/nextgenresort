@@ -29,6 +29,7 @@ const CustomerLayout: React.FC = () => {
 
   const currentPath = location.pathname;
   const isChat = currentPath.includes('/chat');
+  const isNotifications = currentPath.includes('/notifications');
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
@@ -45,6 +46,7 @@ const CustomerLayout: React.FC = () => {
     });
   }, [user]);
 
+  // Keyboard Detection para hindi umangat ang tabs
   useEffect(() => {
     const onFocusIn = (e: FocusEvent) => {
       const target = e.target as HTMLElement;
@@ -74,7 +76,6 @@ const CustomerLayout: React.FC = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // IDINAGDAG ANG /nextgenresort/ PARA SA GITHUB PAGES
       window.location.replace('/nextgenresort/login');
     } catch (error) {
       console.error('Logout failed:', error);
@@ -92,6 +93,9 @@ const CustomerLayout: React.FC = () => {
     { label: 'Bookings', onClick: () => navigate('/customer/bookings') },
     { label: 'Profile', onClick: () => navigate('/customer/profile') },
   ];
+
+  // HIDDEN ANG TABS SA CHAT AT NOTIFICATIONS PARA HINDI MAGULO
+  const showTabs = !isChat && !isNotifications;
 
   return (
     <IonPage>
@@ -131,7 +135,8 @@ const CustomerLayout: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className={isChat ? 'no-tabs' : 'with-tabs'}>
+      {/* IONCONTENT NA MAY DYNAMIC CLASS */}
+      <IonContent fullscreen className={showTabs ? 'with-tabs' : 'no-tabs'}>
         <Routes>
           <Route path="home" element={<CustomerHome />} />
           <Route path="bookings" element={<MyBookings />} />
@@ -142,7 +147,8 @@ const CustomerLayout: React.FC = () => {
         </Routes>
       </IonContent>
 
-      {!isChat && (
+      {/* CUSTOM BOTTOM TABS (LALABAS LANG KUNG DAPAT) */}
+      {showTabs && (
         <div className="customer-tab-bar">
           <button
             type="button"

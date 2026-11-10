@@ -35,18 +35,19 @@ const AdminLayout: React.FC = () => {
 
   useEffect(() => {
     const unsub = subscribeAdminNotifications((data) => {
+      console.log("🔔 Admin Notifications:", data); // Para makita sa console kung may data
       setNotifs(data);
     });
     return unsub;
   }, []);
 
+  // Bilangin ang mga HINDI PA NABABASA
   const unreadCount = notifs.filter(n => !n.read).length;
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // IDINAGDAG ANG /nextgenresort/ PARA SA GITHUB PAGES
-      window.location.replace('/nextgenresort/login');
+      window.location.replace('/login');
     } catch (err) {
       console.error('Logout failed:', err);
     }
@@ -92,6 +93,7 @@ const AdminLayout: React.FC = () => {
           </nav>
 
           <div className="admin-header-right">
+            {/* NOTIFICATION BELL */}
             <button
               type="button"
               className="admin-bell-btn"
@@ -99,9 +101,11 @@ const AdminLayout: React.FC = () => {
               aria-label="Notifications"
             >
               <IonIcon icon={notificationsOutline} />
+              {/* DITO LALABAS ANG PULANG DOT KUNG MAY UNREAD */}
               {unreadCount > 0 && <span className="admin-dot" />}
             </button>
 
+            {/* LOGOUT BUTTON */}
             <button
               type="button"
               className="admin-logout-btn hide-on-mobile"
