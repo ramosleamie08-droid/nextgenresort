@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
+import { IonPage, IonHeader, IonToolbar, IonIcon, IonContent } from '@ionic/react';
 import {
-  IonPage, IonHeader, IonToolbar, IonIcon, IonContent, IonLabel
-} from '@ionic/react';
-import {
-  homeOutline, calendarOutline, personOutline,
+  homeOutline, calendarOutline, personOutline, mapOutline,
   menuOutline, locationOutline, notificationsOutline
 } from 'ionicons/icons';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { onAuthStateChanged, signOut, User } from 'firebase/auth';
+import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { ensureUserProfile } from '../../services/users';
 import { subscribeNotifications } from '../../services/notifications';
@@ -15,29 +13,75 @@ import { subscribeNotifications } from '../../services/notifications';
 import CustomerMenu from '../../components/CustomerMenu';
 import CustomerHome from './CustomerHome';
 import CustomerChat from './CustomerChat';
+import CustomerMap from './CustomerMap';
 import MyBookings from './MyBookings';
 import CustomerProfile from './CustomerProfile';
 import CustomerNotifications from './CustomerNotifications';
 import './CustomerLayout.css';
 
+const tabBarStyle: React.CSSProperties = {
+  position: 'fixed',
+  left: 0,
+  right: 0,
+  bottom: 0,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'space-around',
+  height: 'calc(52px + min(env(safe-area-inset-bottom, 0px), 12px))',
+  paddingBottom: 'min(env(safe-area-inset-bottom, 0px), 12px)',
+  background: '#0b4b5e',
+  borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+  boxShadow: '0 -2px 10px rgba(0, 0, 0, 0.15)',
+  zIndex: 9999,
+};
+
+const tabButtonStyle = (active: boolean): React.CSSProperties => ({
+  flex: 1,
+  height: 52,
+  display: 'flex',
+  flexDirection: 'column',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 2,
+  padding: 0,
+  background: 'transparent',
+  border: 'none',
+  cursor: 'pointer',
+  color: active ? '#ffffff' : 'rgba(255, 255, 255, 0.6)',
+  fontFamily: 'inherit',
+});
+
+const tabIconStyle: React.CSSProperties = { fontSize: 22, display: 'block' };
+const tabLabelStyle: React.CSSProperties = { fontSize: 10.5, fontWeight: 600, lineHeight: 1.1 };
+
 const CustomerLayout: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [user, setUser] = useState<User | null>(auth.currentUser);
+  const [authReady, setAuthReady] = useState(false);
   const [unreadCount, setUnreadCount] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [typing, setTyping] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(
+    typeof window !== 'undefined' && window.matchMedia('(min-width: 1024px)').matches
+  );
 
   const currentPath = location.pathname;
   const isChat = currentPath.includes('/chat');
-  const isNotifications = currentPath.includes('/notifications');
 
   useEffect(() => {
     const unsub = onAuthStateChanged(auth, (u) => {
       setUser(u);
+      setAuthReady(true);
       if (u) ensureUserProfile(u).catch(() => undefined);
     });
     return unsub;
   }, []);
+
+  // Walang naka-login: Login page muna
+  useEffect(() => {
+    if (authReady && !user) navigate('/login', { replace: true });
+  }, [authReady, user, navigate]);
 
   useEffect(() => {
     if (!user) { setUnreadCount(0); return undefined; }
@@ -46,41 +90,39 @@ const CustomerLayout: React.FC = () => {
     });
   }, [user]);
 
+  // Desktop o mobile
   useEffect(() => {
+    const mq = window.matchMedia('(min-width: 1024px)');
+    const onChange = () => setIsDesktop(mq.matches);
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
+  // Itago ang tabs habang nagta-type (bukas ang keyboard)
+  useEffect(() => {
+    const isField = (el: Element | null) =>
+      !!el && (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA');
+
     const onFocusIn = (e: FocusEvent) => {
-      const target = e.target as HTMLElement;
-      if (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA') {
-        document.body.classList.add('keyboard-is-open');
-      }
+      if (isField(e.target as Element)) setTyping(true);
     };
 
     const onFocusOut = () => {
       setTimeout(() => {
-        const active = document.activeElement as HTMLElement | null;
-        const stillTyping = active && (active.tagName === 'INPUT' || active.tagName === 'TEXTAREA');
-        if (!stillTyping) document.body.classList.remove('keyboard-is-open');
+        if (!isField(document.activeElement)) setTyping(false);
       }, 100);
     };
 
     document.addEventListener('focusin', onFocusIn);
     document.addEventListener('focusout', onFocusOut);
-
     return () => {
       document.removeEventListener('focusin', onFocusIn);
       document.removeEventListener('focusout', onFocusOut);
-      document.body.classList.remove('keyboard-is-open');
     };
   }, []);
 
-  const handleLogout = async () => {
-    try {
-      await signOut(auth);
-      // IDINAGDAG ANG window.location.origin PARA SIGURADONG TAMA ANG PATH
-      window.location.replace(`${window.location.origin}${import.meta.env.BASE_URL}login`);
-    } catch (error) {
-      console.error('Logout failed:', error);
-    }
-  };
+  // GUARD: dapat nasa ibaba ng lahat ng hooks
+  if (!authReady || !user) return null;
 
   const NAV = [
     { label: 'Home', onClick: () => navigate('/customer/home') },
@@ -90,11 +132,19 @@ const CustomerLayout: React.FC = () => {
     { label: 'Rooms', onClick: () => navigate('/customer/home?cat=rooms') },
     { label: 'Functions', onClick: () => navigate('/customer/home?cat=halls') },
     { label: 'Extras', onClick: () => navigate('/customer/home?cat=extras') },
+    { label: 'Location', onClick: () => navigate('/customer/map') },
     { label: 'Bookings', onClick: () => navigate('/customer/bookings') },
     { label: 'Profile', onClick: () => navigate('/customer/profile') },
   ];
 
-  const showTabs = !isChat && !isNotifications;
+  const showTabs = !isChat && !isDesktop && !typing;
+
+  const tabs = [
+    { label: 'Home', icon: homeOutline, to: '/customer/home', active: currentPath.includes('/home') },
+    { label: 'Map', icon: mapOutline, to: '/customer/map', active: currentPath.includes('/map') },
+    { label: 'Bookings', icon: calendarOutline, to: '/customer/bookings', active: currentPath.includes('/bookings') },
+    { label: 'Profile', icon: personOutline, to: '/customer/profile', active: currentPath.includes('/profile') },
+  ];
 
   return (
     <IonPage>
@@ -134,9 +184,10 @@ const CustomerLayout: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      <IonContent fullscreen className={showTabs ? 'with-tabs' : 'no-tabs'}>
+      <IonContent fullscreen className={isChat ? 'no-tabs' : 'with-tabs'}>
         <Routes>
           <Route path="home" element={<CustomerHome />} />
+          <Route path="map" element={<CustomerMap />} />
           <Route path="bookings" element={<MyBookings />} />
           <Route path="profile" element={<CustomerProfile />} />
           <Route path="chat" element={<CustomerChat />} />
@@ -146,31 +197,19 @@ const CustomerLayout: React.FC = () => {
       </IonContent>
 
       {showTabs && (
-        <div className="customer-tab-bar">
-          <button
-            type="button"
-            className={currentPath.includes('/home') ? 'active' : ''}
-            onClick={() => navigate('/customer/home')}
-          >
-            <IonIcon icon={homeOutline} />
-            <IonLabel>Home</IonLabel>
-          </button>
-          <button
-            type="button"
-            className={currentPath.includes('/bookings') ? 'active' : ''}
-            onClick={() => navigate('/customer/bookings')}
-          >
-            <IonIcon icon={calendarOutline} />
-            <IonLabel>Bookings</IonLabel>
-          </button>
-          <button
-            type="button"
-            className={currentPath.includes('/profile') ? 'active' : ''}
-            onClick={() => navigate('/customer/profile')}
-          >
-            <IonIcon icon={personOutline} />
-            <IonLabel>Profile</IonLabel>
-          </button>
+        <div className="customer-tab-bar" style={tabBarStyle}>
+          {tabs.map((t) => (
+            <button
+              key={t.to}
+              type="button"
+              className={t.active ? 'active' : ''}
+              style={tabButtonStyle(t.active)}
+              onClick={() => navigate(t.to)}
+            >
+              <IonIcon icon={t.icon} style={tabIconStyle} />
+              <span style={tabLabelStyle}>{t.label}</span>
+            </button>
+          ))}
         </div>
       )}
     </IonPage>

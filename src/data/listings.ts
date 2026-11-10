@@ -24,7 +24,7 @@ export interface Listing {
   options?: ListingOption[];
 }
 
-// IDINAGDAG ANG ABSOLUTE PATH PARA SA GITHUB PAGES
+// Absolute path para sa GitHub Pages
 const img = (name: string) => `/nextgenresort/${name}`;
 
 export const formatPeso = (amount: number) =>
@@ -108,6 +108,19 @@ export const LISTINGS: Listing[] = [
     description: 'Perfect venue for small events, birthdays, and gatherings. Air-conditioned with a spacious area.',
     tags: ['Airconditioned', 'Good for 30 pax'],
     maxGuests: 30,
+  },
+  {
+    // TODO: PALITAN ang lahat ng placeholder sa ibaba ng totoong detalye
+    id: 'large-function-hall',
+    name: 'Large Function Hall (Max of 100 persons)', // TODO: tamang kapasidad
+    label: 'Function Halls',
+    category: 'halls',
+    price: 10000, // TODO: tamang presyo
+    priceText: '₱10,000', // TODO: dapat tugma sa price
+    image: img('ca866647fafee9cdbc055feb3f27cd1e.jpg'), // TODO: ilagay ang larawan ng Large Hall sa public/
+    description: 'Spacious venue for big events, weddings, reunions, and celebrations.', // TODO
+    tags: ['Airconditioned', 'Good for 100 pax'], // TODO
+    maxGuests: 100, // TODO
   },
   {
     id: 'videoke',

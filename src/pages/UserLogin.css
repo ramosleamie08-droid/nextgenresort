@@ -1,10 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
 .lg-content {
-  --background: #0b4b5e;
+  --background: #04202a;
   font-family: 'Inter', sans-serif;
 }
 
+/* =========================================
+   BACKGROUND: mas madilim na larawan
+   ========================================= */
 .lg-bg {
   position: relative;
   min-height: 100vh;
@@ -12,18 +15,21 @@
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
-  background: linear-gradient(135deg, #062d38 0%, #0b4b5e 100%);
+  background:
+    linear-gradient(180deg, rgba(3, 24, 32, 0.82) 0%, rgba(4, 32, 42, 0.95) 100%),
+    url('/nextgenresort/592936916_885061910718930_4576195278388961525_n.jpg') center / cover no-repeat;
 }
 
 .lg-overlay {
   position: absolute;
   inset: 0;
-  background: 
-    radial-gradient(circle at top right, rgba(46, 204, 154, 0.1), transparent 40%),
-    radial-gradient(circle at bottom left, rgba(11, 75, 94, 0.5), transparent 40%);
+  background:
+    radial-gradient(circle at top right, rgba(46, 204, 154, 0.12), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(65, 198, 165, 0.08), transparent 45%);
   pointer-events: none;
 }
 
+/* Card na may malinis na border */
 .lg-card {
   position: relative;
   z-index: 1;
@@ -35,16 +41,19 @@
   border-radius: 24px;
   overflow: hidden;
   background: #fff;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow:
+    0 0 0 6px rgba(255, 255, 255, 0.06),
+    0 30px 70px rgba(0, 0, 0, 0.55);
 }
 
+/* Kaliwang panel: ibinalik ang larawan */
 .lg-brand {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   padding: 44px 40px;
   color: #fff;
-  /* GINAWANG ABSOLUTE PATH PARA SA GITHUB PAGES */
   background:
     linear-gradient(to top, rgba(6, 40, 52, 0.95) 0%, rgba(6, 40, 52, 0.2) 80%),
     url('/nextgenresort/592936916_885061910718930_4576195278388961525_n.jpg') center / cover no-repeat;
@@ -117,14 +126,14 @@
   margin-bottom: 14px;
   border-radius: 12px;
   background: #f8fafc;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #dde6ec;
   transition: all 0.2s;
 }
 
 .lg-field:focus-within {
   background: #fff;
-  border-color: #0b4b5e;
-  box-shadow: 0 0 0 4px rgba(11, 75, 94, 0.1);
+  border-color: #41c6a5;
+  box-shadow: 0 0 0 4px rgba(65, 198, 165, 0.18);
 }
 
 .lg-field-icon {
@@ -176,7 +185,7 @@
   font-size: 0.82rem;
   font-weight: 700;
   font-family: inherit;
-  color: #2ecc9a;
+  color: #2ab88a;
   cursor: pointer;
 }
 
@@ -215,19 +224,18 @@
   border: none;
   border-radius: 12px;
   font-size: 1rem;
-  font-weight: 700;
+  font-weight: 800;
   font-family: inherit;
-  color: #fff;
+  color: #0b4b5e;
   cursor: pointer;
-  background: #0b4b5e;
-  box-shadow: 0 8px 20px rgba(11, 75, 94, 0.25);
+  background: #41c6a5;
+  box-shadow: 0 10px 24px rgba(65, 198, 165, 0.4);
   transition: all 0.2s;
 }
 
 .lg-submit:hover {
-  background: #0e5d74;
+  background: #52d3b3;
   transform: translateY(-2px);
-  box-shadow: 0 10px 24px rgba(11, 75, 94, 0.35);
 }
 
 .lg-submit:active {
@@ -276,7 +284,7 @@
   font-size: 0.95rem;
   font-weight: 600;
   font-family: inherit;
-  border: 1.5px solid #e2e8f0;
+  border: 1.5px solid #dde6ec;
   border-radius: 12px;
   cursor: pointer;
   transition: all 0.2s;
@@ -308,6 +316,9 @@
   text-decoration: underline;
 }
 
+/* =========================================
+   MOBILE
+   ========================================= */
 @media (max-width: 768px) {
   .lg-bg {
     padding: 0;
@@ -325,6 +336,7 @@
     width: 100%;
     min-height: 100%;
     border-radius: 0;
+    border: none;
     box-shadow: none;
     display: flex;
     flex-direction: column;
@@ -370,12 +382,9 @@
   }
 }
 
-input[type="password"]::-ms-reveal,
-input[type="password"]::-ms-clear {
-  display: none;
-}
-
-input[type="password"]::-webkit-reveal {
+/* Itago ang built-in na eye icon ng browser */
+input[type='password']::-ms-reveal,
+input[type='password']::-ms-clear {
   display: none;
 }
 
@@ -384,8 +393,4 @@ input[type="password"]::-webkit-reveal {
   visibility: hidden;
   display: none !important;
   pointer-events: none;
-}
-
-.lg-field input[type="password"]::-webkit-textfield-decoration-container {
-  display: none;
 }

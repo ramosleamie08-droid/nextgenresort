@@ -1,21 +1,24 @@
-/* ============ GLOBAL ============ */
+/* =========================================
+   GLOBAL
+   ========================================= */
 .ch-content {
-  --background: #e9f2f5;
-  --padding-top: 56px; 
+  --background: #eef4f7;
+  --padding-top: 56px;
 }
 
-/* ============ HERO SECTION ============ */
+/* =========================================
+   HERO
+   ========================================= */
 .ch-hero {
   position: relative;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: 280px;
-  padding: 40px 24px;
+  min-height: 300px;
+  padding: 40px 20px 64px;
   color: #fff;
-  /* GINAWANG ABSOLUTE PATH PARA SA GITHUB PAGES */
-  background-image: 
-    linear-gradient(90deg, rgba(8, 60, 76, 0.92) 0%, rgba(8, 60, 76, 0.55) 60%, rgba(8, 60, 76, 0.25) 100%),
+  background-image:
+    linear-gradient(100deg, rgba(6, 44, 56, 0.94) 0%, rgba(8, 60, 76, 0.68) 55%, rgba(8, 60, 76, 0.3) 100%),
     url('/nextgenresort/592936916_885061910718930_4576195278388961525_n.jpg');
   background-position: center;
   background-size: cover;
@@ -34,25 +37,30 @@
   align-items: center;
   align-self: flex-start;
   gap: 6px;
-  padding: 6px 12px;
+  padding: 6px 14px;
   margin-bottom: 14px;
   font-size: 0.72rem;
   font-weight: 700;
+  letter-spacing: 0.02em;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  -webkit-backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.28);
 }
 
 .ch-hero-badge ion-icon {
+  font-size: 0.9rem;
   color: #ffc53d;
 }
 
 .ch-hero h1 {
   margin: 0 0 10px;
-  font-size: 2.2rem;
+  font-size: 2.1rem;
   font-weight: 800;
-  line-height: 1.15;
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.25);
 }
 
 .ch-hero h1 span {
@@ -62,41 +70,53 @@
 
 .ch-hero p {
   margin: 0;
-  max-width: 520px;
+  max-width: 560px;
   font-size: 0.95rem;
-  line-height: 1.5;
+  line-height: 1.55;
   opacity: 0.95;
 }
 
-/* ============ MAIN CONTAINER ============ */
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
 .ch-main-container {
   max-width: 1320px;
   margin: 0 auto;
-  padding: 24px 16px 100px;
+  padding: 0 16px 110px;
 }
 
-/* ============ SEARCH ============ */
+/* =========================================
+   SEARCH (bahagyang nakapatong sa hero)
+   ========================================= */
 .ch-search {
+  position: relative;
+  z-index: 2;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin: 0 0 24px;
-  padding: 5px 5px 5px 18px;
+  margin: -30px 0 28px;
+  padding: 6px 6px 6px 20px;
   border-radius: 999px;
   background: #fff;
-  box-shadow: 0 4px 14px rgba(11, 75, 94, 0.1);
+  border: 1px solid #e0eaef;
+  box-shadow: 0 12px 30px rgba(11, 75, 94, 0.14);
+}
+
+.ch-search:focus-within {
+  border-color: #0b4b5e;
+  box-shadow: 0 12px 30px rgba(11, 75, 94, 0.2), 0 0 0 3px rgba(11, 75, 94, 0.1);
 }
 
 .ch-search-icon {
-  font-size: 1.2rem;
-  color: #7a8d96;
   flex-shrink: 0;
+  font-size: 1.25rem;
+  color: #7a8d96;
 }
 
 .ch-search input {
   flex: 1;
   min-width: 0;
-  height: 40px;
+  height: 42px;
   border: none;
   outline: none;
   background: transparent;
@@ -110,8 +130,8 @@
 }
 
 .ch-search button {
-  height: 40px;
-  padding: 0 22px;
+  height: 42px;
+  padding: 0 24px;
   border: none;
   border-radius: 999px;
   background: #0b4b5e;
@@ -120,28 +140,45 @@
   font-weight: 700;
   font-family: inherit;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-/* ============ CATEGORIES ============ */
+.ch-search button:hover {
+  background: #0e5d74;
+}
+
+/* =========================================
+   CATEGORIES
+   ========================================= */
 .ch-cat-head {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
 .ch-cat-head h2 {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   margin: 0;
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   font-weight: 800;
   color: #0b4b5e;
 }
 
+.ch-cat-head h2 ion-icon {
+  font-size: 1.35rem;
+  color: #2ab88a;
+}
+
 .ch-cat-head span {
-  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: #fff;
+  border: 1px solid #e0eaef;
+  font-size: 0.76rem;
   font-weight: 700;
   color: #6b7c85;
 }
@@ -149,8 +186,8 @@
 .ch-chips {
   display: flex;
   gap: 10px;
-  margin-bottom: 18px;
-  padding-bottom: 4px;
+  margin-bottom: 22px;
+  padding: 2px 2px 6px;
   overflow-x: auto;
   scrollbar-width: none;
 }
@@ -162,60 +199,83 @@
 .ch-chip {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   flex-shrink: 0;
-  height: 34px;
-  padding: 0 14px;
+  height: 40px;
+  padding: 0 16px;
   border: 1px solid #d9e5ea;
   border-radius: 999px;
   background: #fff;
   color: #5b6f78;
-  font-size: 0.8rem;
+  font-size: 0.82rem;
   font-weight: 700;
   font-family: inherit;
+  white-space: nowrap;
   cursor: pointer;
-  transition: background 0.2s, color 0.2s;
+  box-shadow: 0 2px 6px rgba(11, 75, 94, 0.05);
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+}
+
+.ch-chip ion-icon {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+}
+
+.ch-chip:hover:not(.active) {
+  border-color: #0b4b5e;
+  color: #0b4b5e;
 }
 
 .ch-chip.active {
   background: #0b4b5e;
   border-color: #0b4b5e;
   color: #fff;
+  box-shadow: 0 6px 14px rgba(11, 75, 94, 0.25);
 }
 
-/* ============ GRID ============ */
+/* =========================================
+   GRID AND CARDS
+   ========================================= */
 .ch-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 16px;
+  gap: 20px;
 }
 
 .ch-card {
   display: flex;
   flex-direction: column;
-  border-radius: 20px;
   overflow: hidden;
+  border-radius: 22px;
   background: #fff;
-  box-shadow: 0 6px 18px rgba(11, 75, 94, 0.08);
-  transition: transform 0.2s, box-shadow 0.2s;
+  border: 1px solid #e0eaef;
+  box-shadow: 0 6px 18px rgba(11, 75, 94, 0.07);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
 }
 
 .ch-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 12px 26px rgba(11, 75, 94, 0.16);
+  transform: translateY(-4px);
+  border-color: #c9dbe2;
+  box-shadow: 0 14px 30px rgba(11, 75, 94, 0.15);
 }
 
 .ch-card-img {
   position: relative;
-  height: 180px;
+  height: 190px;
+  overflow: hidden;
   background: #cfe0e6;
 }
 
 .ch-card-img img {
+  display: block;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
+  transition: transform 0.5s ease;
+}
+
+.ch-card:hover .ch-card-img img {
+  transform: scale(1.06);
 }
 
 .ch-card-badge {
@@ -225,20 +285,21 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(11, 75, 94, 0.1);
   color: #0b4b5e;
-  font-size: 1rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+  font-size: 1.15rem;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.18);
 }
 
 .ch-card-body {
   display: flex;
   flex-direction: column;
   flex: 1;
-  padding: 16px 16px 18px;
+  padding: 18px 18px 20px;
 }
 
 .ch-card-top {
@@ -252,7 +313,7 @@
 .ch-card-cat {
   font-size: 0.68rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
   color: #2ab88a;
 }
@@ -265,8 +326,9 @@
 
 .ch-card-body h3 {
   margin: 0 0 12px;
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
+  line-height: 1.3;
   color: #0e2f3a;
 }
 
@@ -274,24 +336,26 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
 }
 
 .ch-tags span {
   display: inline-flex;
   align-items: center;
-  gap: 5px;
-  padding: 5px 10px;
+  gap: 6px;
+  padding: 6px 11px;
   border-radius: 999px;
-  background: #eef4f6;
+  background: #f1f7f9;
+  border: 1px solid #e3edf1;
   color: #4d636d;
   font-size: 0.72rem;
   font-weight: 700;
 }
 
 .ch-tags ion-icon {
+  flex-shrink: 0;
+  font-size: 1rem;
   color: #2ab88a;
-  font-size: 0.9rem;
 }
 
 .ch-card-btn {
@@ -300,90 +364,158 @@
   justify-content: center;
   gap: 8px;
   width: 100%;
-  height: 46px;
+  height: 48px;
   margin-top: auto;
   border: none;
-  border-radius: 12px;
+  border-radius: 14px;
   background: #0b4b5e;
   color: #fff;
   font-size: 0.92rem;
   font-weight: 700;
   font-family: inherit;
+  letter-spacing: 0.01em;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(11, 75, 94, 0.28);
+  box-shadow: 0 8px 18px rgba(11, 75, 94, 0.26);
+  transition: background 0.2s, transform 0.1s;
+}
+
+.ch-card-btn ion-icon {
+  font-size: 1.15rem;
 }
 
 .ch-card-btn:hover {
   background: #0e5d74;
 }
 
+.ch-card-btn:active {
+  transform: scale(0.98);
+}
+
 .ch-empty {
-  padding: 40px 16px;
+  padding: 48px 16px;
   text-align: center;
   color: #6b7c85;
   font-weight: 600;
 }
 
-/* ============ TABLET ============ */
-@media (min-width: 640px) {
-  .ch-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .ch-hero {
-    min-height: 320px;
-    padding: 50px 32px;
-  }
-  .ch-hero h1 {
-    font-size: 2.5rem;
-  }
-}
-
-/* ============ DESKTOP ============ */
-@media (min-width: 1024px) {
-  .ch-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
-  .ch-hero {
-    min-height: 360px;
-    padding: 60px 48px;
-  }
-}
-
-/* ============ FULLY BOOKED ============ */
+/* =========================================
+   FULLY BOOKED
+   ========================================= */
 .ch-card.is-fully-booked .ch-card-img img {
   filter: grayscale(100%) opacity(0.6);
 }
+
+.ch-card.is-fully-booked:hover .ch-card-img img {
+  transform: none;
+}
+
 .ch-card.is-fully-booked .ch-card-body {
   opacity: 0.8;
 }
+
 .ch-fully-booked-overlay {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  padding: 8px 18px;
+  border-radius: 999px;
   background: rgba(0, 0, 0, 0.85);
   color: #fff;
-  padding: 8px 16px;
-  border-radius: 20px;
+  font-size: 13px;
   font-weight: 700;
-  font-size: 14px;
   letter-spacing: 1px;
   white-space: nowrap;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
+
 .ch-card-btn:disabled {
   background: #e2e8f0;
   color: #718096;
+  box-shadow: none;
   cursor: not-allowed;
 }
+
 .ch-slots-left {
   display: inline-block;
-  background: #fff4e0;
-  color: #b7791f;
-  padding: 4px 8px;
-  border-radius: 6px;
-  font-size: 12px;
-  font-weight: 600;
-  margin: 6px 0;
   width: fit-content;
+  margin: 0 0 10px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #fff4e0;
+  border: 1px solid #f5dfb5;
+  color: #b7791f;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+/* =========================================
+   MOBILE (siksik at malinis)
+   ========================================= */
+@media (max-width: 639px) {
+  .ch-hero {
+    min-height: 270px;
+    padding: 32px 20px 56px;
+  }
+
+  .ch-hero h1 {
+    font-size: 2rem;
+  }
+
+  .ch-search {
+    margin-top: -26px;
+  }
+
+  .ch-card-img {
+    height: 180px;
+  }
+}
+
+/* =========================================
+   TABLET
+   ========================================= */
+@media (min-width: 640px) {
+  .ch-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ch-main-container {
+    padding: 0 24px 110px;
+  }
+
+  .ch-hero {
+    min-height: 340px;
+    padding: 50px 32px 70px;
+  }
+
+  .ch-hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* =========================================
+   DESKTOP
+   ========================================= */
+@media (min-width: 1024px) {
+  .ch-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+
+  .ch-main-container {
+    padding: 0 32px 60px;
+  }
+
+  .ch-hero {
+    min-height: 380px;
+    padding: 60px 48px 80px;
+  }
+
+  .ch-hero h1 {
+    font-size: 2.8rem;
+  }
+
+  .ch-search {
+    margin-top: -34px;
+  }
 }

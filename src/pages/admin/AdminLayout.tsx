@@ -1,14 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import { 
-  IonPage, IonContent, IonIcon
-} from '@ionic/react';
+import { IonPage, IonContent, IonIcon } from '@ionic/react';
 import {
   homeOutline, constructOutline, chatbubbleEllipsesOutline,
   notificationsOutline, menuOutline, logOutOutline
 } from 'ionicons/icons';
 import { useNavigate, useLocation, Routes, Route, Navigate } from 'react-router-dom';
-import { signOut } from 'firebase/auth';
+import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { auth } from '../../firebase';
+import { isAdminEmail } from '../../data/admin';
 import { subscribeAdminNotifications, AdminNotification } from '../../services/adminNotifications';
 
 import AdminMenu from '../../components/AdminMenu';
@@ -30,27 +29,45 @@ const AdminLayout: React.FC = () => {
   const isHome =
     path.includes('/dashboard') || path.includes('/bookings') || path.includes('/guests');
 
+  const [authReady, setAuthReady] = useState(false);
+  const [adminUser, setAdminUser] = useState<User | null>(null);
   const [notifs, setNotifs] = useState<AdminNotification[]>([]);
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const allowed = !!adminUser && isAdminEmail(adminUser.email);
+
+  // Guard: kailangang naka-login at admin
+  useEffect(
+    () =>
+      onAuthStateChanged(auth, (u) => {
+        setAdminUser(u);
+        setAuthReady(true);
+        if (!u || !isAdminEmail(u.email)) navigate('/login', { replace: true });
+      }),
+    [navigate]
+  );
+
   useEffect(() => {
+    if (!allowed) return undefined;
     const unsub = subscribeAdminNotifications((data) => {
       setNotifs(data);
     });
     return unsub;
-  }, []);
+  }, [allowed]);
 
-  const unreadCount = notifs.filter(n => !n.read).length;
+  const unreadCount = notifs.filter((n) => !n.read).length;
 
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // IDINAGDAG ANG window.location.origin PARA SIGURADONG TAMA ANG PATH
       window.location.replace(`${window.location.origin}${import.meta.env.BASE_URL}login`);
     } catch (err) {
       console.error('Logout failed:', err);
     }
   };
+
+  // GUARD: dapat nasa ibaba ng lahat ng hooks
+  if (!authReady || !allowed) return null;
 
   const desktopLinks = [
     { label: 'Home', to: '/admin/dashboard', active: path.includes('/dashboard') },
@@ -66,11 +83,10 @@ const AdminLayout: React.FC = () => {
 
       <header className={`admin-top-header ${isMessages ? 'hide-on-mobile' : ''}`}>
         <div className="admin-header-inner">
-          
           <div className="admin-header-left">
-            <button 
-              type="button" 
-              className="admin-menu-btn hide-on-desktop" 
+            <button
+              type="button"
+              className="admin-menu-btn hide-on-desktop"
               onClick={() => setMenuOpen(true)}
             >
               <IonIcon icon={menuOutline} />
@@ -111,7 +127,6 @@ const AdminLayout: React.FC = () => {
               <IonIcon icon={logOutOutline} />
             </button>
           </div>
-
         </div>
       </header>
 
