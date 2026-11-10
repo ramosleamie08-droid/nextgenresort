@@ -4,6 +4,7 @@ import { defineConfig } from 'vitest/config';
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: '/nextgenresort/', // <-- IDINAGDAG ITO
   plugins: [react(), legacy()],
   test: {
     environment: 'jsdom',
