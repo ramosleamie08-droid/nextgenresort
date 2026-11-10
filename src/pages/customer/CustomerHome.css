@@ -13,10 +13,10 @@
   min-height: 280px;
   padding: 40px 24px;
   color: #fff;
-  /* IDINAGDAG ANG %BASE_URL% PARA GUMANA SA GITHUB PAGES */
+  /* GINAWANG ABSOLUTE PATH PARA SA GITHUB PAGES */
   background-image: 
     linear-gradient(90deg, rgba(8, 60, 76, 0.92) 0%, rgba(8, 60, 76, 0.55) 60%, rgba(8, 60, 76, 0.25) 100%),
-    url('%BASE_URL%592936916_885061910718930_4576195278388961525_n.jpg');
+    url('/nextgenresort/592936916_885061910718930_4576195278388961525_n.jpg');
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;

@@ -24,9 +24,8 @@ export interface Listing {
   options?: ListingOption[];
 }
 
-// HELPER PARA SA IMAGES (Awtomatikong nag-a-adjust sa base URL)
-const base = import.meta.env.BASE_URL;
-const img = (name: string) => `${base}${name}`;
+// IDINAGDAG ANG ABSOLUTE PATH PARA SA GITHUB PAGES
+const img = (name: string) => `/nextgenresort/${name}`;
 
 export const formatPeso = (amount: number) =>
   `₱${amount.toLocaleString('en-PH', { maximumFractionDigits: 0 })}`;
