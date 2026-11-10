@@ -14,13 +14,14 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <AuthProvider>
-      <IonReactRouter>
+      <IonReactRouter basename="/nextgenresort">
+        {/* TINANGGAL ANG AdminMenu DITO */}
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<UserLogin />} />
           <Route path="/register" element={<UserRegister />} />
-
+          
           <Route path="/customer/*" element={<CustomerLayout />} />
           <Route path="/admin/*" element={<AdminLayout />} />
         </Routes>
