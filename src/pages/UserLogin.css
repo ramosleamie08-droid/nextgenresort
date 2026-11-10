@@ -15,7 +15,6 @@
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
-  /* Ginawang madilim na gradient na may kaunting blur para lumitaw ang white card */
   background: linear-gradient(135deg, #062d38 0%, #0b4b5e 100%);
 }
 
@@ -51,9 +50,10 @@
   justify-content: flex-end;
   padding: 44px 40px;
   color: #fff;
+  /* IDINAGDAG ANG %BASE_URL% DITO */
   background:
     linear-gradient(to top, rgba(6, 40, 52, 0.95) 0%, rgba(6, 40, 52, 0.2) 80%),
-    url('/592936916_885061910718930_4576195278388961525_n.jpg') center / cover no-repeat;
+    url('%BASE_URL%592936916_885061910718930_4576195278388961525_n.jpg') center / cover no-repeat;
 }
 
 .lg-badge {
@@ -385,6 +385,7 @@
     max-width: 100%;
   }
 }
+
 /* Itago ang default na mata ng browser (Edge, Chrome, Safari) */
 input[type="password"]::-ms-reveal,
 input[type="password"]::-ms-clear {
