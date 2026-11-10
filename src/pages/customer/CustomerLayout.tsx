@@ -75,8 +75,8 @@ const CustomerLayout: React.FC = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // DYNAMIC NA ANG BASE PATH
-      window.location.replace(`${import.meta.env.BASE_URL}login`);
+      // IDINAGDAG ANG window.location.origin PARA SIGURADONG TAMA ANG PATH
+      window.location.replace(`${window.location.origin}${import.meta.env.BASE_URL}login`);
     } catch (error) {
       console.error('Logout failed:', error);
     }

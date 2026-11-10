@@ -45,8 +45,8 @@ const AdminLayout: React.FC = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      // DYNAMIC NA ANG BASE PATH (Gumagana sa local at GitHub Pages)
-      window.location.replace(`${import.meta.env.BASE_URL}login`);
+      // IDINAGDAG ANG window.location.origin PARA SIGURADONG TAMA ANG PATH
+      window.location.replace(`${window.location.origin}${import.meta.env.BASE_URL}login`);
     } catch (err) {
       console.error('Logout failed:', err);
     }
