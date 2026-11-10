@@ -46,7 +46,6 @@ const CustomerLayout: React.FC = () => {
     });
   }, [user]);
 
-  // Keyboard Detection para hindi umangat ang tabs
   useEffect(() => {
     const onFocusIn = (e: FocusEvent) => {
       const target = e.target as HTMLElement;
@@ -76,7 +75,8 @@ const CustomerLayout: React.FC = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      window.location.replace('/nextgenresort/login');
+      // DYNAMIC NA ANG BASE PATH
+      window.location.replace(`${import.meta.env.BASE_URL}login`);
     } catch (error) {
       console.error('Logout failed:', error);
     }
@@ -94,7 +94,6 @@ const CustomerLayout: React.FC = () => {
     { label: 'Profile', onClick: () => navigate('/customer/profile') },
   ];
 
-  // HIDDEN ANG TABS SA CHAT AT NOTIFICATIONS PARA HINDI MAGULO
   const showTabs = !isChat && !isNotifications;
 
   return (
@@ -135,7 +134,6 @@ const CustomerLayout: React.FC = () => {
         </IonToolbar>
       </IonHeader>
 
-      {/* IONCONTENT NA MAY DYNAMIC CLASS */}
       <IonContent fullscreen className={showTabs ? 'with-tabs' : 'no-tabs'}>
         <Routes>
           <Route path="home" element={<CustomerHome />} />
@@ -147,7 +145,6 @@ const CustomerLayout: React.FC = () => {
         </Routes>
       </IonContent>
 
-      {/* CUSTOM BOTTOM TABS (LALABAS LANG KUNG DAPAT) */}
       {showTabs && (
         <div className="customer-tab-bar">
           <button
