@@ -36,6 +36,10 @@ jobs:
       - name: Build
         run: npm run build
 
+      # BAGONG STEP PARA SA REACT ROUTER SA GITHUB PAGES
+      - name: Create 404.html for React Router
+        run: cp dist/index.html dist/404.html
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
