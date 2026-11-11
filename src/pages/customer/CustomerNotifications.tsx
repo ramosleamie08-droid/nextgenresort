@@ -97,7 +97,7 @@ const CustomerNotifications: React.FC = () => {
     <IonPage>
       <IonContent className="cn-content">
         <div className="cn-wrap">
-          {/* PAGE HEADER (WALANG BACK BUTTON, PARA HINDI MAG-OVERLAP) */}
+          {/* PAGE HEADER (WALANG BACK BUTTON) */}
           <div className="cn-pagehead">
             <div>
               <h2>Notifications</h2>

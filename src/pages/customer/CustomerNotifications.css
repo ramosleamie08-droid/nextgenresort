@@ -9,8 +9,8 @@
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  /* Saktong padding para hindi matakpan ng header sa taas */
-  padding: 24px 16px 100px; 
+  /* IDINAGDAG ANG PADDING-TOP PARA HINDI MATACPAN NG MAIN HEADER */
+  padding: 80px 16px 100px; 
 }
 
 .cn-pagehead {
