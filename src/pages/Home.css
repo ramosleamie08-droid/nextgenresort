@@ -1,5 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
 
+/* =========================================
+   GLOBAL
+   ========================================= */
+.landing-content {
+  --background: #eef4f7;
+}
+
 .landing-content,
 .landing-content h1,
 .landing-content h2,
@@ -8,12 +15,8 @@
   font-family: 'Inter', sans-serif;
 }
 
-.landing-content {
-  --background: #eef4f7;
-}
-
 /* =========================================
-   TOP BAR (STICKY HEADER)
+   STICKY TOP BAR (HEADER)
    ========================================= */
 .landing-nav {
   position: sticky;
@@ -133,7 +136,7 @@
 }
 
 /* =========================================
-   HERO
+   HERO SECTION
    ========================================= */
 .landing-wrapper {
   position: relative;
@@ -141,7 +144,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: calc(100vh - 72px); /* Inadjust para sa sticky header */
+  min-height: calc(100vh - 72px);
   padding: 80px 24px;
   text-align: center;
   box-sizing: border-box;
@@ -245,7 +248,7 @@
 }
 
 /* =========================================
-   SECTIONS
+   SECTIONS (DISCOVER & FEATURES)
    ========================================= */
 .landing-section {
   padding: 64px 20px;
@@ -354,7 +357,7 @@
 }
 
 /* =========================================
-   NEW FOOTER SECTION
+   FOOTER SECTION
    ========================================= */
 .landing-footer-section {
   background: #0b4b5e;
@@ -407,7 +410,7 @@
 }
 
 /* =========================================
-   TABLET AND DESKTOP
+   TABLET & DESKTOP RESPONSIVENESS
    ========================================= */
 @media (min-width: 640px) {
   .landing-title {
@@ -458,4 +461,16 @@
   .landing-grid-3 {
     grid-template-columns: repeat(3, 1fr);
   }
+}
+
+/* =========================================
+   HIDE SCROLLBAR (Pero gumagana pa rin)
+   ========================================= */
+.landing-content::-webkit-scrollbar {
+  display: none;
+}
+
+.landing-content {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
