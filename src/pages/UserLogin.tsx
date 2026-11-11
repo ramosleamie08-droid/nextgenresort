@@ -97,6 +97,7 @@ const UserLogin: React.FC = () => {
       });
   };
 
+  // ITO ANG BINAGO NATIN
   const handleForgot = async () => {
     setError('');
     setInfo('');
@@ -105,10 +106,20 @@ const UserLogin: React.FC = () => {
       return;
     }
     try {
+      setLoading(true);
       await sendPasswordResetEmail(auth, email.trim());
-      setInfo('Password reset link sent. Check your email.');
-    } catch {
-      setError('Could not send reset email. Check the address.');
+      setInfo(`Reset link sent! Please check ${email} (including your Spam folder).`);
+    } catch (err: any) {
+      console.error('Reset error:', err);
+      if (err.code === 'auth/user-not-found') {
+        setError('No account found with this email address.');
+      } else if (err.code === 'auth/invalid-email') {
+        setError('Please enter a valid email address.');
+      } else {
+        setError('Could not send reset email. Please try again later.');
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -171,7 +182,24 @@ const UserLogin: React.FC = () => {
                 </div>
 
                 {error && <div className="lg-error">{error}</div>}
-                {info && <div className="lg-info">{info}</div>}
+                {/* DINAGDAGAN NATIN NG STYLE PARA GUMANDA ANG GREEN BOX */}
+                {info && (
+                  <div 
+                    className="lg-info" 
+                    style={{ 
+                      color: '#0f5132', 
+                      backgroundColor: '#d1e7dd', 
+                      padding: '12px', 
+                      borderRadius: '8px', 
+                      marginTop: '10px', 
+                      fontSize: '14px',
+                      textAlign: 'center',
+                      lineHeight: '1.4'
+                    }}
+                  >
+                    {info}
+                  </div>
+                )}
 
                 <button type="submit" className="lg-submit" disabled={loading}>
                   {loading ? <IonSpinner name="crescent" /> : 'Log In'}
