@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from 'react';
-import { IonToast } from '@ionic/react'; // <-- IDINAGDAG ITO
+import { IonToast } from '@ionic/react';
 import {
   Booking,
   acceptBooking,
@@ -10,6 +10,7 @@ import {
   subscribeBookings,
 } from '../../services/bookings';
 import { formatPeso } from '../../data/listings';
+import RejectBookingModal from './RejectBookingModal'; // <-- IDINAGDAG
 import './AdminPages.css';
 
 type Filter = 'all' | 'pending' | 'cancel' | 'confirmed' | 'refunds';
@@ -69,8 +70,11 @@ const AdminBookings: React.FC = () => {
   const [busy, setBusy] = useState('');
   const [error, setError] = useState('');
   
-  // IDINAGDAG: Para sa success at error notifications
   const [successMsg, setSuccessMsg] = useState('');
+
+  // IDINAGDAG: States para sa Reject Modal
+  const [isRejectModalOpen, setIsRejectModalOpen] = useState(false);
+  const [bookingToReject, setBookingToReject] = useState<Booking | null>(null);
 
   useEffect(() => subscribeBookings(setBookings), []);
 
@@ -86,7 +90,6 @@ const AdminBookings: React.FC = () => {
 
   const shown = bookings.filter((b) => matches(b, filter));
 
-  // INALIS ANG Promise<void> NAGING Promise<any>
   const run = async (id: string, fn: () => Promise<any>, confirmMsg?: string, successMsgText?: string) => {
     if (confirmMsg && !window.confirm(confirmMsg)) return;
     setError('');
@@ -102,6 +105,22 @@ const AdminBookings: React.FC = () => {
     } finally {
       setBusy('');
     }
+  };
+
+  // IDINAGDAG: Function para i-process ang rejection galing sa Modal
+  const handleRejectConfirm = async (reason: string) => {
+    if (!bookingToReject) return;
+    
+    setIsRejectModalOpen(false);
+    
+    await run(
+      bookingToReject.id,
+      () => rejectBooking(bookingToReject, reason), // Pansinin: may 'reason' na ipinapasa
+      undefined, 
+      'Booking rejected and customer notified.'
+    );
+    
+    setBookingToReject(null);
   };
 
   return (
@@ -239,7 +258,6 @@ const AdminBookings: React.FC = () => {
                     type="button"
                     className="ap-btn ap-btn-primary"
                     disabled={busy === b.id}
-                    // DITO ANG FIX: acceptBooking(b) imbes na acceptBooking(b.id)
                     onClick={() =>
                       run(
                         b.id, 
@@ -251,18 +269,16 @@ const AdminBookings: React.FC = () => {
                   >
                     Accept
                   </button>
+                  
+                  {/* BINAGO: onClick para buksan ang Modal imbes na window.confirm */}
                   <button
                     type="button"
                     className="ap-btn ap-btn-danger"
                     disabled={busy === b.id}
-                    onClick={() =>
-                      run(
-                        b.id,
-                        () => rejectBooking(b),
-                        'Reject this booking? The payment will need to be refunded.',
-                        'Booking rejected.'
-                      )
-                    }
+                    onClick={() => {
+                      setBookingToReject(b);
+                      setIsRejectModalOpen(true);
+                    }}
                   >
                     Reject
                   </button>
@@ -308,7 +324,17 @@ const AdminBookings: React.FC = () => {
         </div>
       )}
 
-      {/* IDINAGDAG: IonToast para sa success at error message */}
+      {/* IDINAGDAG: Reject Modal Component */}
+      <RejectBookingModal
+        isOpen={isRejectModalOpen}
+        onClose={() => {
+          setIsRejectModalOpen(false);
+          setBookingToReject(null);
+        }}
+        onConfirm={handleRejectConfirm}
+        bookingDetails={bookingToReject ? `${bookingToReject.listingName} - ${bookingToReject.name}` : ''}
+      />
+
       <IonToast
         isOpen={!!successMsg}
         message={successMsg}

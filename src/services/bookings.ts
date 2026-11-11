@@ -6,7 +6,7 @@ import {
   query,
   serverTimestamp,
   updateDoc,
-  addDoc, // IDINAGDAG PARA SA NOTIFICATION
+  addDoc,
 } from 'firebase/firestore';
 import { db } from '../firebase';
 import { 
@@ -14,7 +14,6 @@ import {
   notifyBookingRejected, 
   notifyBookingCancelled 
 } from './notifications';
-// IDINAGDAG ITO PARA SA ADMIN NOTIFICATION
 import { createAdminNotification } from './adminNotifications';
 
 export type BookingStatus =
@@ -49,6 +48,7 @@ export interface Booking {
   refundAmount?: number;
   refundedAt?: any;
   createdAt: any;
+  rejectReason?: string; // IDINAGDAG: Para maisave ang dahilan ng reject
 }
 
 const ref = (id: string) => doc(db, 'bookings', id);
@@ -77,15 +77,17 @@ export const acceptBooking = async (b: Booking) => {
 };
 
 // I-reject ang booking: ibabalik ang bayad
-export const rejectBooking = async (b: Booking) => {
+// BINAGO: May 'reason' parameter na
+export const rejectBooking = async (b: Booking, reason: string = '') => {
   await updateDoc(ref(b.id), {
     status: 'rejected',
     paymentStatus: 'rejected',
     refundStatus: 'to-refund',
     refundAmount: b.amountPaid,
+    rejectReason: reason, // IDINAGDAG: Isi-save ang dahilan
     updatedAt: serverTimestamp(),
   });
-  await notifyBookingRejected(b.userId, b.id, b.listingName);
+  await notifyBookingRejected(b.userId, b.id, b.listingName, reason);
 };
 
 // Aprubahan ang cancellation request ng customer
