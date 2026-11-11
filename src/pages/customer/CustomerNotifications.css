@@ -1,5 +1,5 @@
 /* =========================================
-   HEADER
+   HEADER (Para sa page title sa mobile)
    ========================================= */
 .cn-header {
   display: flex;
@@ -48,7 +48,31 @@
   width: 100%;
   max-width: 800px;
   margin: 0 auto;
-  padding: 24px 16px 100px;
+  /* IDINAGDAG ANG PADDING-TOP PARA HINDI MATACPAN NG HEADER SA DESKTOP */
+  padding: 100px 16px 100px; 
+}
+
+/* Sa mobile, ibalik sa normal padding dahil may sariling header */
+@media (max-width: 768px) {
+  .cn-wrap {
+    padding: 24px 16px 100px;
+  }
+  .cn-header {
+    display: flex; /* Ipakita ang custom header sa mobile */
+  }
+  .cn-pagehead {
+    display: none; /* Itago ang desktop title sa mobile */
+  }
+}
+
+/* Para sa desktop, itago ang custom mobile header */
+@media (min-width: 769px) {
+  .cn-header {
+    display: none;
+  }
+  .cn-pagehead {
+    display: flex;
+  }
 }
 
 .cn-pagehead {
@@ -223,16 +247,4 @@
 
 .cn-empty span {
   font-size: 0.9rem;
-}
-
-/* =========================================
-   DESKTOP ADJUSTMENTS (Optional)
-   ========================================= */
-@media (min-width: 1024px) {
-  .cn-header {
-    display: none; /* Itago ang custom header sa desktop kung may admin header */
-  }
-  .cn-wrap {
-    padding-top: 40px;
-  }
 }
