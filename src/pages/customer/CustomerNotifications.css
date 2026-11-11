@@ -1,19 +1,23 @@
 /* =========================================
-   HEADER (MOBILE LANG)
+   HEADER
    ========================================= */
 .cn-header {
-  display: none;
+  display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 14px 16px;
-  background: #1f4e5a;
+  gap: 12px;
+  padding: 14px 20px;
+  background: #0b4b5e;
   color: #fff;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .cn-header h1 {
   flex: 1;
   margin: 0;
-  font-size: 18px;
+  font-size: 1.2rem;
   font-weight: 700;
 }
 
@@ -25,27 +29,26 @@
   border: none;
   background: transparent;
   color: #fff;
-  font-size: 22px;
+  font-size: 1.5rem;
+  cursor: pointer;
 }
 
 .cn-markall {
-  font-size: 20px !important;
+  font-size: 1.5rem !important;
 }
 
 /* =========================================
-   PAGE WRAPPER (HINDI SAGAD)
+   PAGE WRAPPER
    ========================================= */
 .cn-content {
-  --background: #f4f7f8;
-  /* I-adjust ito kung kulang o sobra (70px - 110px) */
-  --cn-top-offset: 90px;
+  --background: #eef2f6;
 }
 
 .cn-wrap {
   width: 100%;
-  max-width: 1100px;
+  max-width: 800px;
   margin: 0 auto;
-  padding: var(--cn-top-offset) 20px 40px;
+  padding: 24px 16px 100px;
 }
 
 .cn-pagehead {
@@ -53,19 +56,19 @@
   align-items: flex-end;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 20px;
 }
 
 .cn-pagehead h2 {
   margin: 0 0 2px;
   font-size: 1.6rem;
   font-weight: 800;
-  color: #1f4e5a;
+  color: #0b4b5e;
 }
 
 .cn-count {
   font-size: 0.85rem;
-  color: #6b7c83;
+  color: #64748b;
 }
 
 .cn-markall-btn {
@@ -73,10 +76,10 @@
   align-items: center;
   gap: 6px;
   padding: 9px 16px;
-  border: 1.5px solid #1f4e5a;
+  border: 1.5px solid #0b4b5e;
   border-radius: 10px;
   background: #fff;
-  color: #1f4e5a;
+  color: #0b4b5e;
   font-size: 0.85rem;
   font-weight: 700;
   cursor: pointer;
@@ -84,265 +87,152 @@
 }
 
 .cn-markall-btn:hover {
-  background: #1f4e5a;
+  background: #0b4b5e;
   color: #fff;
 }
 
 /* =========================================
-   TABLE CARD
+   LIST & CARD ITEMS
    ========================================= */
-.cn-table-card {
-  overflow: hidden;
+.cn-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cn-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
   background: #fff;
-  border: 1px solid #dbe5e8;
-  border-radius: 14px;
-  box-shadow: 0 4px 16px rgba(31, 78, 90, 0.06);
-}
-
-.cn-table {
-  width: 100%;
-  border-collapse: collapse;
-  table-layout: fixed;
-}
-
-.cn-table thead th {
-  padding: 13px 16px;
-  background: #eef4f6;
-  border-bottom: 1px solid #dbe5e8;
-  text-align: left;
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  color: #52666e;
-}
-
-.cn-table td {
-  padding: 14px 16px;
-  border-bottom: 1px solid #e8eff1;
-  vertical-align: middle;
-  font-size: 0.9rem;
-  color: #4a5b62;
-}
-
-.cn-table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-/* Column widths */
-.col-icon   { width: 72px; }
-.col-title  { width: 22%; }
-.col-date   { width: 150px; }
-.col-action { width: 60px; text-align: center; }
-
-/* =========================================
-   ROWS
-   ========================================= */
-.cn-row {
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(11, 75, 94, 0.04);
   cursor: pointer;
-  transition: background 0.15s;
+  transition: transform 0.1s, box-shadow 0.1s;
 }
 
-.cn-row:hover {
-  background: #f5fafb;
+.cn-item:active {
+  transform: scale(0.99);
 }
 
-.cn-row:focus-visible {
-  outline: 2px solid #41c6a5;
-  outline-offset: -2px;
+.cn-item.unread {
+  border-left: 4px solid #0b4b5e;
+  background: #f8fbfc;
 }
 
-.cn-row.unread {
-  background: #f0f9f7;
-}
-
-.cn-row.unread td:first-child {
-  box-shadow: inset 4px 0 0 #1f4e5a;
-}
-
-.cn-row.read .cn-title {
-  font-weight: 600;
+.cn-item.read {
+  opacity: 0.75;
 }
 
 .cn-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
-  background: #eef2f5;
-  color: #4a5568;
-  font-size: 20px;
+  font-size: 1.3rem;
+  flex-shrink: 0;
 }
 
-.kind-accepted .cn-icon  { background: #e6f7ec; color: #2f855a; }
-.kind-rejected .cn-icon  { background: #ffe8e8; color: #c53030; }
-.kind-cancelled .cn-icon { background: #fff4e0; color: #b7791f; }
-.kind-message .cn-icon   { background: #e5f0ff; color: #2b6cb0; }
+/* Kulay ng icons base sa type */
+.kind-accepted .cn-icon { background: #d1fae5; color: #047857; }
+.kind-rejected .cn-icon { background: #fee2e2; color: #b91c1c; }
+.kind-cancelled .cn-icon { background: #fee2e2; color: #b91c1c; }
+.kind-message .cn-icon { background: #e0f2fe; color: #0369a1; }
+.kind-general .cn-icon { background: #f1f5f9; color: #475569; }
+
+.cn-body {
+  flex: 1;
+  min-width: 0;
+}
 
 .cn-title {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 0.92rem;
+  font-size: 1rem;
   font-weight: 700;
-  color: #1f4e5a;
+  color: #0b4b5e;
+  margin-bottom: 4px;
 }
 
 .cn-dot {
-  flex-shrink: 0;
   width: 8px;
   height: 8px;
   border-radius: 50%;
   background: #e53e3e;
+  display: inline-block;
 }
 
-.col-text {
+.cn-text {
+  font-size: 0.9rem;
+  color: #475569;
   line-height: 1.4;
-}
-
-.cn-date,
-.cn-time {
-  display: block;
-}
-
-.cn-date {
-  font-size: 0.85rem;
-  color: #4a5b62;
+  margin-bottom: 6px;
 }
 
 .cn-time {
-  margin-top: 2px;
   font-size: 0.75rem;
-  color: #8fa0a6;
+  color: #94a3b8;
 }
 
 .cn-delete {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 34px;
-  height: 34px;
-  border: none;
-  border-radius: 8px;
   background: transparent;
-  color: #9fb0b6;
-  font-size: 18px;
+  border: none;
+  color: #cbd5e1;
+  font-size: 1.2rem;
+  padding: 8px;
   cursor: pointer;
-  transition: background 0.15s, color 0.15s;
+  flex-shrink: 0;
+  transition: color 0.2s;
 }
 
 .cn-delete:hover {
-  background: #fee2e2;
   color: #e53e3e;
 }
 
 /* =========================================
-   EMPTY / LOADING
+   EMPTY & LOADING
    ========================================= */
 .cn-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
-  padding: 70px 24px;
+  padding: 60px 24px;
   text-align: center;
-  color: #6b7c83;
+  color: #64748b;
+  gap: 8px;
 }
 
 .cn-empty-icon {
+  font-size: 64px;
+  color: #cbd5e1;
   margin-bottom: 8px;
-  font-size: 56px;
-  color: #b9c7cc;
 }
 
 .cn-empty p {
   margin: 0;
-  font-weight: 600;
-  color: #1f4e5a;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #0b4b5e;
 }
 
 .cn-empty span {
-  font-size: 13px;
+  font-size: 0.9rem;
 }
 
 /* =========================================
-   MOBILE: BALIK SA CARD STYLE
+   DESKTOP ADJUSTMENTS (Optional)
    ========================================= */
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
   .cn-header {
-    display: flex;
+    display: none; /* Itago ang custom header sa desktop kung may admin header */
   }
-
-  .cn-pagehead {
-    display: none;
-  }
-
-  /* Mobile: may sariling cn-header, kaya normal padding lang */
   .cn-wrap {
-    padding: 12px;
-  }
-
-  .cn-table-card {
-    overflow: visible;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-  }
-
-  .cn-table-card.cn-empty {
-    background: #fff;
-    border: 1px solid #dbe5e8;
-    border-radius: 14px;
-  }
-
-  .cn-table,
-  .cn-table tbody {
-    display: block;
-  }
-
-  .cn-table thead {
-    display: none;
-  }
-
-  .cn-row {
-    display: grid;
-    grid-template-columns: 44px 1fr 36px;
-    grid-template-areas:
-      'icon title action'
-      'icon text  action'
-      'icon date  action';
-    column-gap: 12px;
-    margin-bottom: 10px;
-    padding: 12px;
-    background: #fff;
-    border: 1px solid #e3eaec;
-    border-radius: 12px;
-  }
-
-  .cn-row.unread {
-    background: #f7fbfc;
-    border-color: #1f4e5a;
-  }
-
-  .cn-row.unread td:first-child {
-    box-shadow: none;
-  }
-
-  .cn-table td {
-    padding: 0;
-    border: none;
-  }
-
-  .col-icon   { grid-area: icon; width: auto; }
-  .col-title  { grid-area: title; width: auto; }
-  .col-text   { grid-area: text; margin-top: 2px; font-size: 0.85rem; }
-  .col-date   { grid-area: date; width: auto; margin-top: 4px; display: flex; gap: 8px; }
-  .col-action { grid-area: action; width: auto; }
-
-  .cn-time {
-    margin-top: 0;
+    padding-top: 40px;
   }
 }

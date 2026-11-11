@@ -234,3 +234,46 @@
 .cp-btn-logout:hover {
   background: #e2e8f0;
 }
+.cp-avatar-wrap {
+  position: relative;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.cp-avatar {
+  overflow: hidden;
+}
+
+.cp-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.cp-avatar-btn {
+  position: absolute;
+  right: -2px;
+  bottom: -2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 3px solid #fff;
+  border-radius: 50%;
+  background: #0b4b5e;
+  color: #fff;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.cp-avatar-btn:hover:not(:disabled) {
+  filter: brightness(1.15);
+}
+
+.cp-avatar-btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
