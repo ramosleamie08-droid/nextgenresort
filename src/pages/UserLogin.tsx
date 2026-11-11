@@ -6,7 +6,7 @@ import {
   eyeOutline,
   eyeOffOutline,
 } from 'ionicons/icons';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import {
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -17,14 +17,22 @@ import { auth } from '../firebase';
 import { homeFor } from '../data/admin';
 import './UserLogin.css';
 
+type LocationState = { registered?: boolean; email?: string } | null;
+
 const UserLogin: React.FC = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const location = useLocation();
+  const fromRegister = location.state as LocationState;
+
+  // Galing sa Register page: ilagay na agad ang email at ipakita ang success message
+  const [email, setEmail] = useState(fromRegister?.email ?? '');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [info, setInfo] = useState('');
+  const [info, setInfo] = useState(
+    fromRegister?.registered ? 'Account created! Please log in.' : ''
+  );
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -64,14 +72,14 @@ const UserLogin: React.FC = () => {
     setLoading(true);
 
     const provider = new GoogleAuthProvider();
-    
+
     signInWithPopup(auth, provider)
       .then((result) => {
         navigate(homeFor(result.user.email), { replace: true });
       })
       .catch((err: any) => {
         console.error('Google login error:', err);
-        
+
         if (err?.code === 'auth/popup-closed-by-user') {
           setError('Sign-in cancelled.');
         } else if (err?.code === 'auth/popup-blocked') {

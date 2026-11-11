@@ -9,7 +9,7 @@ import {
   eyeOffOutline,
 } from 'ionicons/icons';
 import { useNavigate } from 'react-router-dom';
-import { createUserWithEmailAndPassword, updateProfile } from 'firebase/auth';
+import { createUserWithEmailAndPassword, signOut, updateProfile } from 'firebase/auth';
 import { auth } from '../firebase';
 import './UserLogin.css';
 
@@ -46,7 +46,15 @@ const UserRegister: React.FC = () => {
       const cred = await createUserWithEmailAndPassword(auth, email.trim(), password);
       await updateProfile(cred.user, { displayName: name.trim() });
       // TODO: i-save ang phone sa Firestore kung kailangan
-      navigate('/customer/home', { replace: true });
+
+      // Awtomatikong naka-login ang user pagkatapos mag-sign up.
+      // I-log out muna para sa login page siya dumaan.
+      await signOut(auth);
+
+      navigate('/login', {
+        replace: true,
+        state: { registered: true, email: email.trim() },
+      });
     } catch (err: any) {
       const code = err?.code as string | undefined;
       if (code === 'auth/email-already-in-use') {
