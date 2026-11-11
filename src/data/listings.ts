@@ -110,14 +110,14 @@ export const LISTINGS: Listing[] = [
     maxGuests: 30,
   },
   {
-    // TODO: PALITAN ang lahat ng placeholder sa ibaba ng totoong detalye
+    // TODO: PALITAN ang presyo, kapasidad at description ng totoong detalye
     id: 'large-function-hall',
     name: 'Large Function Hall (Max of 100 persons)', // TODO: tamang kapasidad
     label: 'Function Halls',
     category: 'halls',
     price: 10000, // TODO: tamang presyo
     priceText: '₱10,000', // TODO: dapat tugma sa price
-    image: img('ca866647fafee9cdbc055feb3f27cd1e.jpg'), // TODO: ilagay ang larawan ng Large Hall sa public/
+    image: img('f812eaef86f96ee74947afafe18530f6.jpg'),
     description: 'Spacious venue for big events, weddings, reunions, and celebrations.', // TODO
     tags: ['Airconditioned', 'Good for 100 pax'], // TODO
     maxGuests: 100, // TODO
@@ -129,7 +129,7 @@ export const LISTINGS: Listing[] = [
     category: 'extras',
     price: 500,
     priceText: '₱500',
-    image: img('f812eaef86f96ee74947afafe18530f6.jpg'),
+    image: img('renta-de-karaoke-en-cdmx-renta-de-karaoke-rockola-karaoke-alquiler-de-karaoke-ciudad-de-mexico-02.webp'),
     description: 'Sing your heart out with our videoke rental. Perfect for bonding with family and friends.',
     tags: ['Unlimited songs', '2 hours use'],
   },
