@@ -1,7 +1,6 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { IonPage, IonContent, IonIcon, IonSpinner } from '@ionic/react';
 import {
-  arrowBackOutline,
   checkmarkDoneOutline,
   notificationsOutline,
   trashOutline,
@@ -96,20 +95,9 @@ const CustomerNotifications: React.FC = () => {
 
   return (
     <IonPage>
-      <header className="cn-header">
-        <button type="button" onClick={() => navigate('/customer/home')} aria-label="Back">
-          <IonIcon icon={arrowBackOutline} />
-        </button>
-        <h1>Notifications</h1>
-        {unreadCount > 0 && (
-          <button type="button" className="cn-markall" onClick={handleMarkAll} aria-label="Mark all as read">
-            <IonIcon icon={checkmarkDoneOutline} />
-          </button>
-        )}
-      </header>
-
       <IonContent className="cn-content">
         <div className="cn-wrap">
+          {/* PAGE HEADER (WALANG BACK BUTTON, PARA HINDI MAG-OVERLAP) */}
           <div className="cn-pagehead">
             <div>
               <h2>Notifications</h2>
