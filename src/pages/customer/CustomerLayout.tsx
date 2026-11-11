@@ -5,7 +5,7 @@ import {
   menuOutline, locationOutline, notificationsOutline
 } from 'ionicons/icons';
 import { Navigate, Route, Routes, useLocation, useNavigate } from 'react-router-dom';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, signOut, User } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { ensureUserProfile } from '../../services/users';
 import { subscribeNotifications } from '../../services/notifications';

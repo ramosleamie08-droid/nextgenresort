@@ -14,8 +14,8 @@ setupIonicReact();
 const App: React.FC = () => (
   <IonApp>
     <AuthProvider>
-      <IonReactRouter basename="/nextgenresort">
-        {/* TINANGGAL ANG AdminMenu DITO */}
+      {/* INALIS ANG basename PARA GUMANA SA LOCALHOST AT VERCEL */}
+      <IonReactRouter>
         <Routes>
           <Route path="/" element={<Navigate to="/home" replace />} />
           <Route path="/home" element={<Home />} />

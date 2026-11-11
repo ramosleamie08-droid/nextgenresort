@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vitest/config';
 
 export default defineConfig({
-  base: '/nextgenresort/', // <-- SIGURADUHING NANDITO ITO
+  base: '/', // <-- DAPAT ITO ANG NAKALAGAY PARA SA VERCEL
   plugins: [react(), legacy()],
   test: {
     environment: 'jsdom',

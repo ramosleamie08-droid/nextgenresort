@@ -60,7 +60,8 @@ const AdminLayout: React.FC = () => {
   const handleLogout = async () => {
     try {
       await signOut(auth);
-      window.location.replace(`${window.location.origin}${import.meta.env.BASE_URL}login`);
+      // PALITAN ITO: /login na lang para gumana sa Vercel
+      window.location.replace('/login');
     } catch (err) {
       console.error('Logout failed:', err);
     }

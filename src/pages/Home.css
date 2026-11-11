@@ -148,9 +148,10 @@
   padding: 80px 24px;
   text-align: center;
   box-sizing: border-box;
+  /* INALIS ANG /nextgenresort/ PARA SA VERCEL AT LOCALHOST */
   background:
     linear-gradient(180deg, rgba(6, 44, 56, 0.55) 0%, rgba(8, 60, 76, 0.85) 100%),
-    url('/nextgenresort/592936916_885061910718930_4576195278388961525_n.jpg') no-repeat center center / cover;
+    url('/592936916_885061910718930_4576195278388961525_n.jpg') no-repeat center center / cover;
 }
 
 .landing-title {
