@@ -5,10 +5,10 @@ import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
 import './CustomerMap.css';
 
-// TODO: REPLACE with the exact coordinates of Next Gen Pascual Resort.
-// In Google Maps: right-click the resort, then click the numbers (lat, lng) to copy them.
-// The values below are only the center of Victoria town, not the resort itself.
-const RESORT = { lat: 13.1767, lng: 121.2785, name: 'Next Gen Pascual Resort' };
+// Pansamantala: sentro ng Brgy. Bagong Buhay, Victoria, Oriental Mindoro.
+// TODO: palitan ng exact coordinates ng Next Gen Pascual Resort.
+// Sa Google Maps: right-click sa mismong resort, tapos i-click ang mga numero (lat, lng) para makopya.
+const RESORT = { lat: 13.2002, lng: 121.2056, name: 'Next Gen Pascual Resort' };
 
 // Optional: places the customer can pick quickly (for example barangays).
 // Add the correct coordinates before using. Example:

@@ -1,154 +1,348 @@
+/* =========================================
+   HEADER (MOBILE LANG)
+   ========================================= */
 .cn-header {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 8px;
   padding: 14px 16px;
   background: #1f4e5a;
   color: #fff;
 }
+
 .cn-header h1 {
   flex: 1;
-  font-size: 18px;
   margin: 0;
+  font-size: 18px;
   font-weight: 700;
 }
+
 .cn-header button {
-  background: transparent;
-  border: none;
-  color: #fff;
-  font-size: 22px;
-  padding: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 4px;
+  border: none;
+  background: transparent;
+  color: #fff;
+  font-size: 22px;
 }
+
 .cn-markall {
   font-size: 20px !important;
 }
+
+/* =========================================
+   PAGE WRAPPER (HINDI SAGAD)
+   ========================================= */
 .cn-content {
   --background: #f4f7f8;
+  /* I-adjust ito kung kulang o sobra (70px - 110px) */
+  --cn-top-offset: 90px;
 }
+
+.cn-wrap {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--cn-top-offset) 20px 40px;
+}
+
+.cn-pagehead {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.cn-pagehead h2 {
+  margin: 0 0 2px;
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #1f4e5a;
+}
+
+.cn-count {
+  font-size: 0.85rem;
+  color: #6b7c83;
+}
+
+.cn-markall-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: 1.5px solid #1f4e5a;
+  border-radius: 10px;
+  background: #fff;
+  color: #1f4e5a;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cn-markall-btn:hover {
+  background: #1f4e5a;
+  color: #fff;
+}
+
+/* =========================================
+   TABLE CARD
+   ========================================= */
+.cn-table-card {
+  overflow: hidden;
+  background: #fff;
+  border: 1px solid #dbe5e8;
+  border-radius: 14px;
+  box-shadow: 0 4px 16px rgba(31, 78, 90, 0.06);
+}
+
+.cn-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.cn-table thead th {
+  padding: 13px 16px;
+  background: #eef4f6;
+  border-bottom: 1px solid #dbe5e8;
+  text-align: left;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #52666e;
+}
+
+.cn-table td {
+  padding: 14px 16px;
+  border-bottom: 1px solid #e8eff1;
+  vertical-align: middle;
+  font-size: 0.9rem;
+  color: #4a5b62;
+}
+
+.cn-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Column widths */
+.col-icon   { width: 72px; }
+.col-title  { width: 22%; }
+.col-date   { width: 150px; }
+.col-action { width: 60px; text-align: center; }
+
+/* =========================================
+   ROWS
+   ========================================= */
+.cn-row {
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cn-row:hover {
+  background: #f5fafb;
+}
+
+.cn-row:focus-visible {
+  outline: 2px solid #41c6a5;
+  outline-offset: -2px;
+}
+
+.cn-row.unread {
+  background: #f0f9f7;
+}
+
+.cn-row.unread td:first-child {
+  box-shadow: inset 4px 0 0 #1f4e5a;
+}
+
+.cn-row.read .cn-title {
+  font-weight: 600;
+}
+
+.cn-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #eef2f5;
+  color: #4a5568;
+  font-size: 20px;
+}
+
+.kind-accepted .cn-icon  { background: #e6f7ec; color: #2f855a; }
+.kind-rejected .cn-icon  { background: #ffe8e8; color: #c53030; }
+.kind-cancelled .cn-icon { background: #fff4e0; color: #b7791f; }
+.kind-message .cn-icon   { background: #e5f0ff; color: #2b6cb0; }
+
+.cn-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #1f4e5a;
+}
+
+.cn-dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #e53e3e;
+}
+
+.col-text {
+  line-height: 1.4;
+}
+
+.cn-date,
+.cn-time {
+  display: block;
+}
+
+.cn-date {
+  font-size: 0.85rem;
+  color: #4a5b62;
+}
+
+.cn-time {
+  margin-top: 2px;
+  font-size: 0.75rem;
+  color: #8fa0a6;
+}
+
+.cn-delete {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: #9fb0b6;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.cn-delete:hover {
+  background: #fee2e2;
+  color: #e53e3e;
+}
+
+/* =========================================
+   EMPTY / LOADING
+   ========================================= */
 .cn-empty {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 60px 24px;
-  color: #6b7c83;
   gap: 8px;
+  padding: 70px 24px;
+  text-align: center;
+  color: #6b7c83;
 }
+
 .cn-empty-icon {
+  margin-bottom: 8px;
   font-size: 56px;
   color: #b9c7cc;
-  margin-bottom: 8px;
 }
+
 .cn-empty p {
   margin: 0;
   font-weight: 600;
   color: #1f4e5a;
 }
+
 .cn-empty span {
   font-size: 13px;
 }
-.cn-empty button {
-  margin-top: 12px;
-  background: #1f4e5a;
-  color: #fff;
-  border: none;
-  padding: 10px 22px;
-  border-radius: 8px;
-  font-weight: 600;
-}
-.cn-list {
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-.cn-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  padding: 12px;
-  background: #fff;
-  border-radius: 12px;
-  border: 1px solid #e3eaec;
-  text-align: left;
-  width: 100%;
-  cursor: pointer;
-  position: relative;
-  transition: transform 0.1s ease, box-shadow 0.1s ease;
-}
-.cn-item:active {
-  transform: scale(0.99);
-}
-.cn-item.unread {
-  border-color: #1f4e5a;
-  background: #f7fbfc;
-  box-shadow: 0 2px 8px rgba(31, 78, 90, 0.08);
-}
-.cn-item.read {
-  opacity: 0.85;
-}
-.cn-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 20px;
-  flex-shrink: 0;
-}
-.type-message .cn-icon { background: #e5f0ff; color: #2b6cb0; }
-.type-booking-accepted .cn-icon { background: #e6f7ec; color: #2f855a; }
-.type-booking-rejected .cn-icon { background: #ffe8e8; color: #c53030; }
-.type-booking-cancelled .cn-icon { background: #fff4e0; color: #b7791f; }
-.type-general .cn-icon { background: #eef2f5; color: #4a5568; }
-.cn-body {
-  flex: 1;
-  min-width: 0;
-}
-.cn-title {
-  font-size: 14px;
-  font-weight: 700;
-  color: #1f4e5a;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.cn-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #e53e3e;
-  display: inline-block;
-}
-.cn-text {
-  font-size: 13px;
-  color: #4a5b62;
-  margin-top: 2px;
-  line-height: 1.35;
-  overflow: hidden;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-   line-clamp: 3; /* <--- IDAGDAG ITO */
-  -webkit-box-orient: vertical;
-}
-.cn-time {
-  font-size: 11px;
-  color: #8fa0a6;
-  margin-top: 4px;
-}
-.cn-delete {
-  background: transparent;
-  border: none;
-  color: #b9c7cc;
-  font-size: 18px;
-  padding: 4px;
-  flex-shrink: 0;
-}
-.cn-delete:active {
-  color: #e53e3e;
+
+/* =========================================
+   MOBILE: BALIK SA CARD STYLE
+   ========================================= */
+@media (max-width: 768px) {
+  .cn-header {
+    display: flex;
+  }
+
+  .cn-pagehead {
+    display: none;
+  }
+
+  /* Mobile: may sariling cn-header, kaya normal padding lang */
+  .cn-wrap {
+    padding: 12px;
+  }
+
+  .cn-table-card {
+    overflow: visible;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .cn-table-card.cn-empty {
+    background: #fff;
+    border: 1px solid #dbe5e8;
+    border-radius: 14px;
+  }
+
+  .cn-table,
+  .cn-table tbody {
+    display: block;
+  }
+
+  .cn-table thead {
+    display: none;
+  }
+
+  .cn-row {
+    display: grid;
+    grid-template-columns: 44px 1fr 36px;
+    grid-template-areas:
+      'icon title action'
+      'icon text  action'
+      'icon date  action';
+    column-gap: 12px;
+    margin-bottom: 10px;
+    padding: 12px;
+    background: #fff;
+    border: 1px solid #e3eaec;
+    border-radius: 12px;
+  }
+
+  .cn-row.unread {
+    background: #f7fbfc;
+    border-color: #1f4e5a;
+  }
+
+  .cn-row.unread td:first-child {
+    box-shadow: none;
+  }
+
+  .cn-table td {
+    padding: 0;
+    border: none;
+  }
+
+  .col-icon   { grid-area: icon; width: auto; }
+  .col-title  { grid-area: title; width: auto; }
+  .col-text   { grid-area: text; margin-top: 2px; font-size: 0.85rem; }
+  .col-date   { grid-area: date; width: auto; margin-top: 4px; display: flex; gap: 8px; }
+  .col-action { grid-area: action; width: auto; }
+
+  .cn-time {
+    margin-top: 0;
+  }
 }
